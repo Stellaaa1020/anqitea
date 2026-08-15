@@ -32,6 +32,10 @@
         originZh: '云南 · 大叶种鲜叶', originEn: 'Yunnan · Large-leaf varietal',
         liquorZh: '嫩绿明亮', liquorEn: 'Bright jade green',
         brewZh: '水温 80°C · 静置 2–3 分钟', brewEn: 'Water at 80°C · steep 2–3 min',
+        storyZh: '「碧蕴藏灵」——碧色之中，藏着山灵。云南大叶种鲜叶，条索卷曲如螺、白毫隐翠；热水落下，嫩绿在杯底舒展，一口是清鲜的春天气。',
+        storyEn: '"Jade Spirit" — the mountain\'s spirit hidden in green. Yunnan large-leaf buds curled like snails; hot water wakes the jade leaves at the cup\'s bottom. One sip: fresh spring air.',
+        aromaZh: '嫩栗香与豆香，清扬干净', aromaEn: 'Fresh chestnut and bean aroma, clean and bright',
+        tasteZh: '入口清鲜，回甘快而持久', tasteEn: 'Fresh on the palate, quick and lingering sweetness',
         tint: '#9CC26B',
         img: 'assets/img/design-biluochun.jpg', story: 'assets/img/story-biluochun.jpg'
       },
@@ -44,6 +48,10 @@
         originZh: '福建 · 福鼎', originEn: 'Fuding · Fujian',
         liquorZh: '杏黄清透', liquorEn: 'Clear apricot gold',
         brewZh: '水温 85–90°C · 静置 3 分钟', brewEn: 'Water at 85–90°C · steep 3 min',
+        storyZh: '「百福」谐音「白福」。福鼎寿眉不炒不揉、自然萎凋，晒足阳光的叶片看似粗犷，出汤却意外温柔——枣香甜润，像把一百个祝福装进一只杯。',
+        storyEn: '"Hundred Blessings" puns on white tea\'s fu. Fuding Shou Mei is neither pan-fired nor rolled — sun-withered leaves that brew gentle: jujube sweetness, a hundred blessings in one cup.',
+        aromaZh: '枣香清甜，带日光气', aromaEn: 'Sun-sweet jujube aroma',
+        tasteZh: '甜润顺滑，越泡越柔', tasteEn: 'Smooth and sweet, softer with each steep',
         tint: '#D9B36A',
         img: 'assets/img/design-shoumei.jpg', story: 'assets/img/story-shoumei.jpg'
       },
@@ -56,6 +64,10 @@
         originZh: '武夷山 & 云南', originEn: 'Wuyishan & Yunnan',
         liquorZh: '橙红透亮', liquorEn: 'Bright amber red',
         brewZh: '见双口味冲泡建议', brewEn: 'See brewing notes per flavor',
+        storyZh: '马年推出的双味桶：一杯武夷山大红袍，一杯云南普洱——岩骨花香在前，陈醇温润在后。马跃新程，愿新的一年每一程都有好茶。',
+        storyEn: "A Horse-Year double: Wuyishan Da Hong Pao and Yunnan Pu'er in one tube — mineral florals first, mellow age behind. Leaping into the new year, good tea on every road.",
+        aromaZh: '大红袍岩骨花香 · 普洱陈香沉稳', aromaEn: "Da Hong Pao\'s rock florals · Pu\'er\'s settled age",
+        tasteZh: '岩韵回甘 · 醇厚温润', tasteEn: 'Lingering rock rhyme · mellow and warm',
         tint: '#8A5A33',
         flavors: [
           { nameZh: '大红袍', nameEn: 'Da Hong Pao',
@@ -76,6 +88,10 @@
         originZh: '云南 · 凤庆', originEn: 'Fengqing · Yunnan',
         liquorZh: '红艳带金圈', liquorEn: 'Vivid red with a golden ring',
         brewZh: '水温 90°C · 静置 3 分钟', brewEn: 'Water at 90°C · steep 3 min',
+        storyZh: '「金鹊祥雲」——金鹊踏着祥云来。凤庆滇红金毫满披，红艳的茶汤外圈泛着金边；蜜香入口，喜气也跟着入了盏。',
+        storyEn: '"The Magpie of Auspicious Clouds" — a golden magpie rides in. Fengqing Dian Hong tipped in gold brews a vivid red ringed with light; honey sweetness, and good fortune, in the cup.',
+        aromaZh: '蜜香馥郁，带薯甜', aromaEn: 'Rich honey with sweet-potato notes',
+        tasteZh: '甜醇饱满，收口干净', tasteEn: 'Full and sweet, clean finish',
         tint: '#C0492B',
         img: 'assets/img/design-dianhong.jpg', story: 'assets/img/story-dianhong.jpg'
       }

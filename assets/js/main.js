@@ -51,6 +51,10 @@
         : 'ANQI TEA · Yunque Xiao Cup Tea';
     }
     renderSeries(lang);
+    if (document.body.dataset.page && document.body.dataset.page !== 'home' &&
+        window.ANQI && window.ANQI.mountProduct) {
+      window.ANQI.mountProduct(lang); // 详情页：整段重渲染（纯函数，随语言切换）
+    }
     const b = $('langToggle');
     if (b) b.textContent = lang === 'zh' ? 'EN' : '中';
   }

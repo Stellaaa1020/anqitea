@@ -32,7 +32,11 @@
       'contact.sub': '雲鹊晓杯茶在家庭门店与抖音同步贩售。这是一位高中生的品牌设计作品——欢迎指教。',
       'contact.douyin': '抖音 · @云鹊晓AQ', 'contact.shop': '线下 · 安祺家的茶店',
       'contact.btn': '去抖音看看',
-      'footer.note': '本站为安祺的个人品牌设计作品 · ANQI\'S PORTFOLIO'
+      'footer.note': '本站为安祺的个人品牌设计作品 · ANQI\'S PORTFOLIO',
+      'dt.back': '← 返回杯茶系列', 'dt.storyT': '茶的故事', 'dt.tasteT': '品鉴',
+      'dt.brewT': '冲泡建议', 'dt.specT': '规格速览', 'dt.moreT': '继续探索',
+      'dt.price': '价格', 'dt.origin': '产地', 'dt.type': '茶类', 'dt.pack': '规格',
+      'dt.liquor': '汤色', 'dt.aroma': '香气', 'dt.taste': '滋味'
     },
     en: {
       'nav.home': 'Home', 'nav.curated': 'Cup Teas', 'nav.story': 'Our Story',
@@ -63,7 +67,11 @@
       'contact.sub': "Yunque Xiao Cup Teas are sold at our family shop and on Douyin. A high-schooler's brand design project — feedback welcome.",
       'contact.douyin': 'Douyin · @YunqueXiaoAQ', 'contact.shop': "Offline · Anqi's family tea shop",
       'contact.btn': 'Watch on Douyin',
-      'footer.note': "ANQI'S PORTFOLIO · A STUDENT BRAND PROJECT"
+      'footer.note': "ANQI'S PORTFOLIO · A STUDENT BRAND PROJECT",
+      'dt.back': '← Back to Cup Teas', 'dt.storyT': 'The Story', 'dt.tasteT': 'Tasting',
+      'dt.brewT': 'How to Brew', 'dt.specT': 'At a Glance', 'dt.moreT': 'Keep Exploring',
+      'dt.price': 'Price', 'dt.origin': 'Origin', 'dt.type': 'Tea Type', 'dt.pack': 'Pack',
+      'dt.liquor': 'Liquor', 'dt.aroma': 'Aroma', 'dt.taste': 'Taste'
     }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

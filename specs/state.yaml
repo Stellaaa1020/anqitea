@@ -1,7 +1,7 @@
 project: anqi-tea
 branch: feat/cup-tea-series
 current_epic: e01
-current_story: e01s03
+current_story: e01s04
 handoff:
   next_skill: develop-tdd
 constraints:
