@@ -4,7 +4,7 @@
   "private": true,
   "description": "安祺与茶 ANQI TEA — 雲鹊晓杯茶品牌作品集站点（零构建静态站，Node 仅用于测试）",
   "scripts": {
-    "test": "node --test test/"
+    "test": "node --test"
   },
   "engines": { "node": ">=18" }
 }
