@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安祺与茶 ANQI TEA · 一羽惊鸿，一盏东方</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   安祺与茶 · 新国潮视觉体系
+   配色纪律：朱砂红/亮橙主导，鎏金只做线与点缀，浅蓝只做氛围底色
+   ============================================================ */
+:root {
+  --zhu:        #E8392A;  /* 朱雀朱 · 主色 */
+  --zhu-deep:   #B3241A;  /* 朱砂暗部 */
+  --cheng:      #F2662D;  /* 赤焰橙 */
+  --jin:        #C9A24B;  /* 鎏金 · 线 */
+  --jin-light:  #E8C98A;  /* 浅金高光 */
+  --rice:       #FAF4E8;  /* 宣纸米白 */
+  --ink:        #211812;  /* 玄墨 */
+  --tea:        #B4691E;  /* 琥珀茶汤 */
+  --text:       #4A3F35;  /* 暖墨灰正文 */
+  --ice:        #E7F2F8;  /* 冰蓝氛围底 */
+  --ice-deep:   #CFE6F2;  /* 冰蓝深色 */
+  --blue:       #3D7A9E;  /* 浅蓝文字点缀 */
+  --blue-tint:  rgba(143,193,220,.16);
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --serif: "Noto Serif SC", "Songti SC", serif;
+  --sans:  "Noto Sans SC", "PingFang SC", sans-serif;
+  --latin: "Cormorant Garamond", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--rice);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--zhu); color: #fff; }
+
+/* ---------------- 导航 ---------------- */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 64px);
+  height: 76px;
+  transition: height .4s var(--ease-out), background .4s, box-shadow .4s;
+}
+.nav.scrolled {
+  height: 58px;
+  background: rgba(250, 244, 232, .72);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(201, 162, 75, .25), 0 8px 30px rgba(33, 24, 18, .06);
+}
+.logo {
+  font-family: var(--serif); font-weight: 900; font-size: 20px;
+  color: var(--ink); text-decoration: none; letter-spacing: .12em;
+  display: flex; align-items: baseline; gap: 10px;
+}
+.logo span {
+  font-family: var(--latin); font-weight: 600; font-size: 11px;
+  letter-spacing: .32em; color: var(--jin);
+}
+.nav-links { display: flex; gap: clamp(16px, 3vw, 40px); align-items: center; }
+.nav-links a {
+  position: relative; text-decoration: none; color: var(--text);
+  font-size: 14px; font-weight: 500; letter-spacing: .08em;
+  padding: 6px 2px; transition: color .25s;
+}
+.nav-links a::after {
+  content: ""; position: absolute; left: 50%; bottom: 0;
+  width: 0; height: 2px; background: var(--zhu); border-radius: 2px;
+  transform: translateX(-50%); transition: width .3s var(--ease-out);
+}
+.nav-links a:hover { color: var(--zhu); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--zhu); }
+
+#langToggle {
+  font-family: var(--latin); font-size: 12px; font-weight: 600; letter-spacing: .14em;
+  color: var(--zhu); background: transparent;
+  border: 1.5px solid var(--zhu); border-radius: 999px;
+  padding: 7px 16px; cursor: pointer;
+  transition: transform .12s ease-out, background .25s, color .25s;
+}
+#langToggle:hover { background: var(--zhu); color: #fff; }
+#langToggle:active { transform: scale(.93); }
+
+/* ---------------- 首屏 Hero ---------------- */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 38%, rgba(207, 230, 242, .55), transparent 70%),
+    linear-gradient(180deg, var(--rice) 0%, #F6F1E4 52%, var(--ice) 100%);
+  overflow: hidden;
+}
+.hero-layer { position: absolute; inset: 0; pointer-events: none; will-change: transform; }
+.layer-bg  { z-index: 1; }
+.layer-bird{ z-index: 2; display: flex; justify-content: center; }
+.layer-fg  { z-index: 3; }
+
+.suzaku-img {
+  width: min(96vw, 800px); height: auto; display: block;
+  margin-top: clamp(20px, 4vh, 48px);
+  mix-blend-mode: multiply; /* 米白底融入页面渐变 */
+  -webkit-mask-image: radial-gradient(ellipse 76% 72% at 50% 46%, #000 58%, transparent 96%);
+  mask-image: radial-gradient(ellipse 76% 72% at 50% 46%, #000 58%, transparent 96%);
+  animation: heroFloat 8s ease-in-out infinite;
+}
+@keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.gaiwan {
+  position: absolute; left: 50%; bottom: 5%;
+  width: 180px; margin-left: -90px;
+}
+
+/* 朱雀呼吸微动效（盖碗蒸汽流动） */
+.steam-path {
+  stroke-dasharray: 10 18;
+  animation: steamFlow 5s linear infinite;
+}
+@keyframes steamFlow { to { stroke-dashoffset: -280; } }
+
+/* 前景茶雾光斑 */
+.bokeh {
+  position: absolute; border-radius: 50%;
+  filter: blur(26px); opacity: .5;
+  animation: floaty 9s ease-in-out infinite;
+}
+.bokeh.b1 { width: 90px; height: 90px; background: rgba(242, 102, 45, .5);  left: 12%; top: 30%; }
+.bokeh.b2 { width: 60px; height: 60px; background: rgba(232, 201, 138, .7); right: 14%; top: 24%; animation-delay: 2.5s; }
+.bokeh.b3 { width: 44px; height: 44px; background: rgba(143, 193, 220, .8); right: 22%; bottom: 26%; animation-delay: 4s; }
+@keyframes floaty {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-26px); }
+}
+
+/* 竖排对联 */
+.couplet {
+  position: absolute; top: 32%; z-index: 4;
+  writing-mode: vertical-rl;
+  font-family: var(--serif); font-weight: 600; font-size: 15px;
+  letter-spacing: .42em; color: var(--tea);
+  border-right: 1px solid var(--jin); padding-right: 12px;
+}
+.couplet.left  { left: clamp(16px, 6vw, 90px); }
+.couplet.right { right: clamp(16px, 6vw, 90px); border-right: none; border-left: 1px solid var(--jin); padding: 0 0 0 12px; }
+
+/* 首屏文字内容 */
+.hero-content {
+  position: relative; z-index: 5; text-align: center;
+  margin-top: min(52vh, 500px);
+  padding: 0 24px calc(8vh) ;
+}
+.hero-kicker {
+  font-family: var(--latin); font-size: 13px; font-weight: 600;
+  letter-spacing: .5em; color: var(--jin); text-indent: .5em;
+  text-shadow: 0 0 18px rgba(250,244,232,.9);
+}
+.hero-title {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(2.6rem, 7.5vw, 5.6rem);
+  line-height: 1.14; letter-spacing: .06em;
+  color: var(--ink); margin: 18px 0 10px;
+  text-shadow: 0 0 18px rgba(250,244,232,.55), 0 0 50px rgba(250,244,232,.35);
+}
+.hero-title em {
+  font-style: normal;
+  background: linear-gradient(120deg, #B3241A 0%, var(--zhu) 45%, var(--cheng) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-title-en {
+  font-family: var(--latin); font-style: italic; font-weight: 500;
+  font-size: clamp(.95rem, 1.6vw, 1.25rem);
+  letter-spacing: .18em; color: var(--tea);
+}
+.hero-sub { margin-top: 22px; font-size: 15px; letter-spacing: .1em; color: var(--text); }
+.hero-ctas { margin-top: 34px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: .14em;
+  padding: 15px 38px; border-radius: 999px; cursor: pointer; text-decoration: none;
+  transition: transform .12s ease-out, box-shadow .3s, background .3s, color .3s;
+}
+.btn:active { transform: scale(.95); }
+.btn-solid {
+  background: linear-gradient(120deg, var(--zhu), var(--cheng));
+  color: #fff; border: none;
+  box-shadow: 0 10px 28px rgba(232, 57, 42, .35);
+}
+.btn-solid:hover { box-shadow: 0 14px 36px rgba(232, 57, 42, .45); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--jin);
+}
+.btn-ghost:hover { background: rgba(201, 162, 75, .12); }
+
+.scroll-hint {
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+  z-index: 5; font-size: 11px; letter-spacing: .3em; color: var(--tea);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-hint::after {
+  content: ""; width: 1px; height: 34px;
+  background: linear-gradient(var(--jin), transparent);
+  animation: hintDrop 1.8s ease-in-out infinite;
+}
+@keyframes hintDrop { 0% { transform: scaleY(0); transform-origin: top; } 55% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* ---------------- 跑马灯 ---------------- */
+.marquee {
+  background: var(--ink); color: var(--jin-light);
+  overflow: hidden; white-space: nowrap;
+  padding: 16px 0; position: relative; z-index: 6;
+}
+.marquee-track { display: inline-flex; animation: marquee 26s linear infinite; }
+.marquee span {
+  font-family: var(--serif); font-weight: 600; font-size: 15px;
+  letter-spacing: .3em; padding: 0 28px;
+}
+.marquee span i { font-style: normal; color: var(--zhu); padding-right: 28px; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------------- 通用区块 ---------------- */
+.section { padding: clamp(90px, 12vh, 140px) clamp(20px, 6vw, 80px); position: relative; }
+.section-head { max-width: 1200px; margin: 0 auto 56px; display: flex; align-items: flex-end; gap: 28px; }
+.vlabel {
+  writing-mode: vertical-rl; font-size: 12px; font-weight: 700;
+  letter-spacing: .35em; color: var(--blue);
+  background: var(--blue-tint); border-radius: 8px;
+  padding: 14px 7px; flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  letter-spacing: .05em; color: var(--ink); line-height: 1.2;
+}
+.section-title small {
+  display: block; font-family: var(--latin); font-style: italic; font-weight: 500;
+  font-size: .36em; letter-spacing: .22em; color: var(--jin); margin-top: 8px;
+}
+.section-desc { margin-top: 14px; font-size: 15px; line-height: 1.9; letter-spacing: .04em; max-width: 560px; }
+
+/* 进场动效 */
+.reveal { opacity: 0; transform: translateY(56px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-clip { clip-path: inset(0 0 100% 0); transition: clip-path 1s var(--ease-out); }
+.reveal-clip.in { clip-path: inset(0 0 -10% 0); }
+.d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; } .d4 { transition-delay: .32s; }
+
+/* ---------------- 内容精选（浅蓝氛围底） ---------------- */
+#curated {
+  background:
+    radial-gradient(ellipse 60% 40% at 85% 8%, rgba(232, 201, 138, .25), transparent 60%),
+    linear-gradient(180deg, var(--ice) 0%, var(--ice-deep) 100%);
+}
+.carousel-wrap { max-width: 1400px; margin: 0 auto; overflow: hidden; cursor: grab; }
+.carousel-wrap.dragging { cursor: grabbing; }
+.carousel { display: flex; gap: 28px; will-change: transform; padding: 10px 4px 26px; }
+.card {
+  flex: 0 0 min(78vw, 330px);
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 18px 44px rgba(61, 122, 158, .14);
+  overflow: hidden;
+  transition: transform .45s var(--ease-out), box-shadow .45s;
+  user-select: none;
+}
+.card:hover { transform: translateY(-8px); box-shadow: 0 28px 60px rgba(61, 122, 158, .22); }
+.card-visual {
+  height: 220px; display: flex; align-items: flex-end; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.card-visual::before { /* 杯口茶气 */
+  content: ""; position: absolute; top: 26px; left: 50%;
+  width: 2px; height: 46px; border-radius: 2px;
+  background: linear-gradient(transparent, rgba(255,255,255,.9), transparent);
+  transform: translateX(-50%);
+}
+.cup {
+  width: 130px; height: 96px;
+  border-radius: 10px 10px 62px 62px;
+  background: linear-gradient(180deg, #FFFDF8, #F3EAD8);
+  border: 2px solid var(--jin);
+  border-top-width: 3px;
+  position: relative; overflow: hidden; margin-bottom: 34px;
+}
+.cup::before { /* 茶汤 */
+  content: ""; position: absolute; inset: 16px 8px 8px;
+  border-radius: 6px 6px 52px 52px;
+  background: var(--tea-gradient, linear-gradient(160deg, var(--cheng), var(--zhu-deep)));
+}
+.cup::after { /* 杯托 */
+  content: ""; position: absolute; left: 50%; bottom: -34px;
+  width: 170px; height: 12px; border-radius: 999px;
+  background: rgba(201, 162, 75, .35); transform: translateX(-50%);
+}
+.cv-spring { background: linear-gradient(200deg, #FBE9E4, #F6D9CB); --tea-gradient: linear-gradient(160deg, #F2662D, #D9532B); }
+.cv-summer { background: linear-gradient(200deg, #FBEBD8, #F3DDBB); --tea-gradient: linear-gradient(160deg, #D98A2B, #B4691E); }
+.cv-autumn { background: linear-gradient(200deg, #FBF3DC, #F3E4B8); --tea-gradient: linear-gradient(160deg, #E8C98A, #C9A24B); }
+.cv-winter { background: linear-gradient(200deg, #E9E2DA, #D8CCC0); --tea-gradient: linear-gradient(160deg, #6B4632, #3A241A); }
+.card-body { padding: 24px 26px 30px; }
+.card-name { font-family: var(--serif); font-weight: 900; font-size: 21px; letter-spacing: .06em; color: var(--ink); }
+.card-name small { display: block; font-family: var(--latin); font-style: italic; font-weight: 500; font-size: 12.5px; letter-spacing: .14em; color: var(--jin); margin-top: 4px; }
+.card-tag {
+  display: inline-block; margin-top: 14px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: .12em;
+  color: #fff; background: linear-gradient(120deg, var(--zhu), var(--cheng));
+  padding: 5px 14px; border-radius: 999px;
+}
+.card-desc { margin-top: 14px; font-size: 13.5px; line-height: 1.9; letter-spacing: .03em; }
+.carousel-hint { text-align: center; font-size: 12px; letter-spacing: .3em; color: var(--blue); margin-top: 8px; }
+
+/* ---------------- 关于我们（米白） ---------------- */
+.stats { max-width: 1100px; margin: 0 auto 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+.stat {
+  text-align: center; padding: 40px 20px;
+  border-top: 2px solid var(--jin);
+}
+.stat b {
+  font-family: var(--serif); font-weight: 900; font-size: clamp(2.6rem, 5vw, 4rem);
+  background: linear-gradient(140deg, var(--zhu), var(--cheng));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.stat p { margin-top: 8px; font-size: 13px; letter-spacing: .2em; color: var(--text); }
+.values { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+.value {
+  background: #fff; border-radius: 20px; padding: 36px 32px;
+  border: 1px solid rgba(201, 162, 75, .35);
+  box-shadow: 0 14px 36px rgba(33, 24, 18, .05);
+  transition: transform .45s var(--ease-out), box-shadow .45s;
+}
+.value:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(33, 24, 18, .1); }
+.value-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: grid; place-items: center; margin-bottom: 20px;
+  background: linear-gradient(140deg, var(--zhu), var(--cheng));
+  color: #fff; font-family: var(--serif); font-weight: 900; font-size: 20px;
+}
+.value h3 { font-family: var(--serif); font-weight: 900; font-size: 19px; letter-spacing: .08em; color: var(--ink); }
+.value h3 small { font-family: var(--latin); font-style: italic; font-weight: 500; font-size: 12px; letter-spacing: .16em; color: var(--jin); margin-left: 8px; }
+.value p { margin-top: 12px; font-size: 13.5px; line-height: 1.9; }
+
+/* ---------------- 品牌故事（玄墨深底） ---------------- */
+#story {
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(232, 57, 42, .16), transparent 60%),
+    var(--ink);
+  color: rgba(250, 244, 232, .85);
+  overflow: hidden;
+}
+#story .section-title { color: var(--rice); }
+#story .vlabel { color: var(--jin-light); background: rgba(201, 162, 75, .14); }
+.story-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(280px, 1fr) 1.2fr;
+  gap: clamp(40px, 6vw, 90px); align-items: center; position: relative; z-index: 2;
+}
+.story-art { position: relative; }
+.story-art svg { width: 100%; height: auto; }
+.line-draw {
+  fill: none; stroke: var(--jin); stroke-width: 2; opacity: .85;
+  stroke-dasharray: 1400; stroke-dashoffset: 1400;
+  transition: stroke-dashoffset 2.4s var(--ease-out);
+}
+.in .line-draw { stroke-dashoffset: 0; }
+.craft-block {
+  margin-top: 28px; border-radius: 18px; height: 170px;
+  background:
+    linear-gradient(115deg, transparent 62%, rgba(232, 57, 42, .85) 62.2%),
+    radial-gradient(ellipse at 30% 30%, #6B4632, #2C1B12 75%);
+  border: 1px solid rgba(201, 162, 75, .4);
+  display: flex; align-items: flex-end; padding: 18px 22px;
+  font-size: 12px; letter-spacing: .26em; color: var(--jin-light);
+}
+.story-item { padding: 26px 0; border-bottom: 1px solid rgba(201, 162, 75, .22); }
+.story-item:last-child { border-bottom: none; }
+.story-item h3 {
+  font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: .1em;
+  color: var(--jin-light); display: flex; align-items: baseline; gap: 12px;
+}
+.story-item h3 i { font-family: var(--latin); font-style: italic; font-weight: 500; font-size: 13px; color: var(--zhu); letter-spacing: .14em; }
+.story-item p { margin-top: 12px; font-size: 14px; line-height: 2; letter-spacing: .03em; color: rgba(250, 244, 232, .72); }
+.story-vtitle {
+  writing-mode: vertical-rl; font-family: var(--serif); font-weight: 900;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem); letter-spacing: .22em;
+  color: var(--rice);
+  border-left: 1px solid rgba(201, 162, 75, .5); padding-left: 18px;
+  justify-self: start;
+}
+
+/* ---------------- 联系我们 / 页脚 ---------------- */
+#contact {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 110%, rgba(232, 57, 42, .22), transparent 65%),
+    var(--ink);
+  color: var(--rice); text-align: center;
+  padding-bottom: 60px;
+}
+.contact-title {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 4.6rem); letter-spacing: .08em; line-height: 1.25;
+}
+.contact-title small { display: block; font-family: var(--latin); font-style: italic; font-weight: 500; font-size: .3em; letter-spacing: .3em; color: var(--jin); margin-top: 14px; }
+.contact-sub { margin: 26px auto 0; max-width: 520px; font-size: 14.5px; line-height: 2; color: rgba(250, 244, 232, .7); }
+.contact-info { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; font-size: 13.5px; letter-spacing: .1em; color: rgba(250, 244, 232, .75); }
+.contact-info a { color: var(--jin-light); text-decoration: none; border-bottom: 1px solid rgba(201, 162, 75, .5); }
+.contact-cta { margin-top: 40px; }
+.footer-note {
+  margin-top: 90px; padding-top: 28px;
+  border-top: 1px solid rgba(201, 162, 75, .25);
+  font-size: 11.5px; letter-spacing: .18em; color: rgba(250, 244, 232, .45);
+}
+.footer-bird { width: 34px; height: 34px; margin: 0 auto 14px; opacity: .8; }
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width: 900px) {
+  .couplet { display: none; }
+  .story-grid { grid-template-columns: 1fr; }
+  .story-vtitle { writing-mode: horizontal-tb; border-left: none; border-bottom: 1px solid rgba(201,162,75,.5); padding: 0 0 12px; }
+}
+@media (max-width: 760px) {
+  .nav-links a { display: none; }
+  .hero-content { margin-top: 46vh; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .vlabel { writing-mode: horizontal-tb; padding: 7px 14px; }
+}
+
+/* ---------------- 动效降级 ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .2s !important; }
+  .reveal, .reveal-clip { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .line-draw { stroke-dashoffset: 0 !important; }
+  .marquee-track { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= 导航 ================= -->
+<header class="nav" id="nav">
+  <a class="logo" href="#home">安祺与茶<span>ANQI TEA</span></a>
+  <nav class="nav-links">
+    <a href="#home"    data-i18n="nav.home">首页</a>
+    <a href="#curated" data-i18n="nav.curated">内容精选</a>
+    <a href="#about"   data-i18n="nav.about">关于我们</a>
+    <a href="#story"   data-i18n="nav.story">品牌故事</a>
+    <a href="#contact" data-i18n="nav.contact">联系我们</a>
+    <button id="langToggle" aria-label="Switch language">EN</button>
+  </nav>
+</header>
+
+<!-- ================= 首屏 ================= -->
+<section class="hero" id="home">
+  <!-- 远景：云气 -->
+  <div class="hero-layer layer-bg" id="layerBg">
+    <svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <ellipse cx="240" cy="240" rx="220" ry="46" fill="rgba(207,230,242,.55)"/>
+      <ellipse cx="1220" cy="180" rx="260" ry="52" fill="rgba(207,230,242,.45)"/>
+      <ellipse cx="1180" cy="560" rx="200" ry="38" fill="rgba(232,201,138,.28)"/>
+      <ellipse cx="200" cy="620" rx="180" ry="34" fill="rgba(232,201,138,.22)"/>
+    </svg>
+  </div>
+
+  <!-- 中景：朱雀 -->
+  <div class="hero-layer layer-bird" id="layerBird">
+    <img class="suzaku-img" src="phonix.png" alt="朱雀展翅">
+    <svg class="gaiwan" viewBox="0 0 220 170" aria-hidden="true">
+      <g fill="none" stroke="#C9A24B" stroke-width="4" stroke-linecap="round" opacity=".9">
+        <path d="M12 122 Q 110 148 208 122"/>
+        <path d="M30 122 C 36 78 68 56 110 56 C 152 56 184 78 190 122"/>
+        <path d="M66 58 Q 110 28 154 58"/>
+        <circle cx="110" cy="24" r="7"/>
+      </g>
+      <path class="steam-path" d="M98 100 C 90 74 104 56 96 34" fill="none" stroke="rgba(201,162,75,.55)" stroke-width="4" stroke-linecap="round"/>
+      <path class="steam-path" d="M124 100 C 132 74 118 56 126 34" fill="none" stroke="rgba(201,162,75,.55)" stroke-width="4" stroke-linecap="round" style="animation-delay:-2.4s"/>
+    </svg>
+  </div>
+
+  <!-- 前景光斑 -->
+  <div class="hero-layer layer-fg" id="layerFg">
+    <div class="bokeh b1"></div><div class="bokeh b2"></div><div class="bokeh b3"></div>
+  </div>
+
+  <div class="couplet left"  data-i18n="hero.vLeft">南方之神 · 衔火而来</div>
+  <div class="couplet right" data-i18n="hero.vRight">以茶为羽 · 以火为魂</div>
+
+  <div class="hero-content" id="heroContent">
+    <p class="hero-kicker">ANQI TEA · EST. 2026</p>
+    <h1 class="hero-title"><em data-i18n="hero.titleA">一羽惊鸿</em><br><span data-i18n="hero.titleB">一盏东方</span></h1>
+    <p class="hero-title-en">A Feather's Flash · A Cup of the East</p>
+    <p class="hero-sub" data-i18n="hero.sub">安祺与茶 —— 以千年朱雀之灵，焙一盏当代东方茶。</p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="#curated" data-i18n="hero.cta1">品鉴此刻</a>
+      <a class="btn btn-ghost" href="#story" data-i18n="hero.cta2">品牌故事</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" data-i18n="hero.scroll">向下探索</div>
+</section>
+
+<!-- ================= 跑马灯 ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span><i>◆</i>一羽惊鸿 · 一盏东方</span><span><i>◆</i>安祺与茶 ANQI TEA</span><span><i>◆</i>A FEATHER'S FLASH, A CUP OF THE EAST</span><span><i>◆</i>朱雀展翼 · 茶沸东方</span>
+  </div>
+</div>
+
+<!-- ================= 内容精选 ================= -->
+<section class="section" id="curated">
+  <div class="section-head">
+    <span class="vlabel reveal" data-i18n="curated.label">内容精选</span>
+    <div>
+      <h2 class="section-title reveal-clip" data-i18n="curated.title">朱雀四序<small>Four Seasons of the Vermilion Bird</small></h2>
+      <p class="section-desc reveal d1" data-i18n="curated.desc">四季轮转，四羽四味。每一片羽毛，都是一盏风味的诗。</p>
+    </div>
+  </div>
+
+  <div class="carousel-wrap reveal d2" id="carouselWrap">
+    <div class="carousel" id="carousel">
+      <article class="card">
+        <div class="card-visual cv-spring"><div class="cup"></div></div>
+        <div class="card-body">
+          <h3 class="card-name"><span data-i18n="p1.name">春 · 绯羽</span><small data-i18n="p1.en">Spring · Scarlet Plume</small></h3>
+          <span class="card-tag" data-i18n="p1.tag">蜜香红茶</span>
+          <p class="card-desc" data-i18n="p1.desc">头春嫩芽，蜜韵悠长，如初阳落盏。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-visual cv-summer"><div class="cup"></div></div>
+        <div class="card-body">
+          <h3 class="card-name"><span data-i18n="p2.name">夏 · 炽翎</span><small data-i18n="p2.en">Summer · Ember Quill</small></h3>
+          <span class="card-tag" data-i18n="p2.tag">岩韵乌龙</span>
+          <p class="card-desc" data-i18n="p2.desc">岩骨花香，炽烈如风过赤崖。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-visual cv-autumn"><div class="cup"></div></div>
+        <div class="card-body">
+          <h3 class="card-name"><span data-i18n="p3.name">秋 · 鎏金</span><small data-i18n="p3.en">Autumn · Gilded Feather</small></h3>
+          <span class="card-tag" data-i18n="p3.tag">桂花金萱</span>
+          <p class="card-desc" data-i18n="p3.desc">桂子飘香，金汤澄澈，饮一盏秋光。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-visual cv-winter"><div class="cup"></div></div>
+        <div class="card-body">
+          <h3 class="card-name"><span data-i18n="p4.name">冬 · 玄羽</span><small data-i18n="p4.en">Winter · Mystic Down</small></h3>
+          <span class="card-tag" data-i18n="p4.tag">陈香普洱</span>
+          <p class="card-desc" data-i18n="p4.desc">岁月陈香，温厚如围炉夜话。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  <p class="carousel-hint" data-i18n="curated.hint">← 拖动探索 →</p>
+</section>
+
+<!-- ================= 关于我们 ================= -->
+<section class="section" id="about">
+  <div class="section-head">
+    <span class="vlabel reveal" data-i18n="about.label">关于我们</span>
+    <div>
+      <h2 class="section-title reveal-clip" data-i18n="about.title">以雀为志 · 以茶为心<small>The Bird Our Mark, Tea Our Heart</small></h2>
+      <p class="section-desc reveal d1" data-i18n="about.desc">我们相信，古老的图腾值得被年轻的手重新点亮。从高山茶园到城市街巷，安祺与茶以现代工艺致敬千年茶脉。</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat reveal d1"><b data-count="28">0</b><p data-i18n="about.s1">城市门店</p></div>
+    <div class="stat reveal d2"><b data-count="1800">0</b><p data-i18n="about.s2">茶园海拔（米）</p></div>
+    <div class="stat reveal d3"><b data-count="36">0</b><p data-i18n="about.s3">制茶工序</p></div>
+  </div>
+
+  <div class="values">
+    <div class="value reveal d1">
+      <div class="value-icon">源</div>
+      <h3><span data-i18n="about.v1t">原料</span><small>ORIGIN</small></h3>
+      <p data-i18n="about.v1">明前采摘，一芽一叶，高山云雾滋养。</p>
+    </div>
+    <div class="value reveal d2">
+      <div class="value-icon">焙</div>
+      <h3><span data-i18n="about.v2t">工艺</span><small>CRAFT</small></h3>
+      <p data-i18n="about.v2">三十六道古法工序，文火慢焙，方得岩骨花香。</p>
+    </div>
+    <div class="value reveal d3">
+      <div class="value-icon">新</div>
+      <h3><span data-i18n="about.v3t">态度</span><small>ATTITUDE</small></h3>
+      <p data-i18n="about.v3">不做旧的茶，只做年轻人的第一盏东方。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 品牌故事 ================= -->
+<section class="section" id="story">
+  <div class="section-head">
+    <span class="vlabel reveal" data-i18n="story.label">品牌故事</span>
+    <h2 class="section-title reveal-clip" data-i18n="story.title">自火中来 · 向茶而生<small>Born of Fire, Bound for Tea</small></h2>
+  </div>
+
+  <div class="story-grid">
+    <div class="story-art reveal" id="storyArt">
+      <svg viewBox="0 0 600 660" aria-hidden="true">
+        <path class="line-draw" d="M187 599 A120 120 0 0 1 413 599"/>
+        <path class="line-draw" d="M121 575 A190 190 0 0 1 479 575"/>
+        <path class="line-draw" d="M56 551 A260 260 0 0 1 544 551"/>
+        <path class="line-draw" d="M10 527 A330 330 0 0 1 590 527"/>
+        <path class="line-draw" d="M300 640 L300 470"/>
+        <path class="line-draw" d="M300 640 L140 520"/>
+        <path class="line-draw" d="M300 640 L460 520"/>
+        <circle class="line-draw" cx="300" cy="440" r="26"/>
+      </svg>
+      <div class="craft-block" data-i18n="story.caption">文火慢焙 · 三十六道工序</div>
+    </div>
+
+    <div>
+      <div class="story-item reveal d1">
+        <h3><span data-i18n="story.p1t">起源</span><i>ORIGIN</i></h3>
+        <p data-i18n="story.p1">朱雀，南方之神，衔火而行，所至皆春。安祺与茶取其神韵——以火焙茶，以茶传火。</p>
+      </div>
+      <div class="story-item reveal d2">
+        <h3><span data-i18n="story.p2t">工艺</span><i>CRAFT</i></h3>
+        <p data-i18n="story.p2">每一片茶叶历经采、晒、摇、炒、焙三十六道工序，如朱雀浴火，方显真味。</p>
+      </div>
+      <div class="story-item reveal d3">
+        <h3><span data-i18n="story.p3t">当代</span><i>TODAY</i></h3>
+        <p data-i18n="story.p3">今天，这簇火落在年轻的手中。一盏茶，是图腾，也是日常。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 联系我们 ================= -->
+<section class="section" id="contact">
+  <div class="reveal">
+    <svg class="footer-bird" viewBox="0 0 1000 1000" aria-hidden="true">
+      <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#C9A24B" transform="translate(500,700) rotate(-40)"/>
+      <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#E8392A" transform="translate(500,700)"/>
+      <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#C9A24B" transform="translate(500,700) rotate(40)"/>
+    </svg>
+    <h2 class="contact-title"><span data-i18n="contact.title">来，饮一杯东方</span><small>COME, DRINK THE EAST</small></h2>
+    <p class="contact-sub" data-i18n="contact.sub">门店、加盟与商务合作，欢迎来盏茶慢慢聊。</p>
+    <div class="contact-info">
+      <p data-i18n="contact.addr">旗舰店 · 成都市锦江区茶道里 9 号</p>
+      <p><a href="mailto:hello@anqitea.com">hello@anqitea.com</a></p>
+    </div>
+    <div class="contact-cta">
+      <a class="btn btn-solid" href="mailto:hello@anqitea.com" data-i18n="contact.btn">预约品鉴</a>
+    </div>
+  </div>
+  <p class="footer-note">© 2026 安祺与茶 ANQI TEA · <span data-i18n="footer.note">一羽惊鸿，一盏东方</span></p>
+</section>
+
+<script>
+/* ============================================================
+   交互层 · Apple 流体界面原则
+   - 弹簧/lerp 平滑，可随时中断
+   - 拖动手势 1:1 跟踪 + 速度投影 + 松手吸附
+   - prefers-reduced-motion 全面降级
+   ============================================================ */
+const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- 中英双语 ---------- */
+const i18n = {
+  zh: {
+    'nav.home':'首页','nav.curated':'内容精选','nav.about':'关于我们','nav.story':'品牌故事','nav.contact':'联系我们',
+    'hero.vLeft':'南方之神 · 衔火而来','hero.vRight':'以茶为羽 · 以火为魂',
+    'hero.titleA':'一羽惊鸿','hero.titleB':'一盏东方',
+    'hero.sub':'安祺与茶 —— 以千年朱雀之灵，焙一盏当代东方茶。',
+    'hero.cta1':'品鉴此刻','hero.cta2':'品牌故事','hero.scroll':'向下探索',
+    'curated.label':'内容精选','curated.title':'朱雀四序',
+    'curated.desc':'四季轮转，四羽四味。每一片羽毛，都是一盏风味的诗。',
+    'curated.hint':'← 拖动探索 →',
+    'p1.name':'春 · 绯羽','p1.en':'Spring · Scarlet Plume','p1.tag':'蜜香红茶','p1.desc':'头春嫩芽，蜜韵悠长，如初阳落盏。',
+    'p2.name':'夏 · 炽翎','p2.en':'Summer · Ember Quill','p2.tag':'岩韵乌龙','p2.desc':'岩骨花香，炽烈如风过赤崖。',
+    'p3.name':'秋 · 鎏金','p3.en':'Autumn · Gilded Feather','p3.tag':'桂花金萱','p3.desc':'桂子飘香，金汤澄澈，饮一盏秋光。',
+    'p4.name':'冬 · 玄羽','p4.en':'Winter · Mystic Down','p4.tag':'陈香普洱','p4.desc':'岁月陈香，温厚如围炉夜话。',
+    'about.label':'关于我们','about.title':'以雀为志 · 以茶为心',
+    'about.desc':'我们相信，古老的图腾值得被年轻的手重新点亮。从高山茶园到城市街巷，安祺与茶以现代工艺致敬千年茶脉。',
+    'about.s1':'城市门店','about.s2':'茶园海拔（米）','about.s3':'制茶工序',
+    'about.v1t':'原料','about.v1':'明前采摘，一芽一叶，高山云雾滋养。',
+    'about.v2t':'工艺','about.v2':'三十六道古法工序，文火慢焙，方得岩骨花香。',
+    'about.v3t':'态度','about.v3':'不做旧的茶，只做年轻人的第一盏东方。',
+    'story.label':'品牌故事','story.title':'自火中来 · 向茶而生',
+    'story.caption':'文火慢焙 · 三十六道工序',
+    'story.p1t':'起源','story.p1':'朱雀，南方之神，衔火而行，所至皆春。安祺与茶取其神韵——以火焙茶，以茶传火。',
+    'story.p2t':'工艺','story.p2':'每一片茶叶历经采、晒、摇、炒、焙三十六道工序，如朱雀浴火，方显真味。',
+    'story.p3t':'当代','story.p3':'今天，这簇火落在年轻的手中。一盏茶，是图腾，也是日常。',
+    'contact.title':'来，饮一杯东方','contact.sub':'门店、加盟与商务合作，欢迎来盏茶慢慢聊。',
+    'contact.addr':'旗舰店 · 成都市锦江区茶道里 9 号','contact.btn':'预约品鉴',
+    'footer.note':'一羽惊鸿，一盏东方'
+  },
+  en: {
+    'nav.home':'Home','nav.curated':'Curated','nav.about':'About','nav.story':'Our Story','nav.contact':'Contact',
+    'hero.vLeft':'GOD OF THE SOUTH · BORN OF FIRE','hero.vRight':'TEA AS PLUME · FIRE AS SOUL',
+    'hero.titleA':"A Feather's Flash",'hero.titleB':'A Cup of the East',
+    'hero.sub':'Anqi Tea — kindled by the Vermilion Bird, brewed for the modern East.',
+    'hero.cta1':'Taste the Moment','hero.cta2':'Our Story','hero.scroll':'SCROLL',
+    'curated.label':'CURATED','curated.title':'Four Seasons',
+    'curated.desc':'Four plumes, four seasons — each feather a poem of flavor.',
+    'curated.hint':'← DRAG TO EXPLORE →',
+    'p1.name':'Spring · Scarlet Plume','p1.en':'春 · 绯羽','p1.tag':'Honeyed Black Tea','p1.desc':'First spring buds with a lingering honeyed finish.',
+    'p2.name':'Summer · Ember Quill','p2.en':'夏 · 炽翎','p2.tag':'Rock Oolong','p2.desc':'Mineral depth and floral fire, like wind over red cliffs.',
+    'p3.name':'Autumn · Gilded Feather','p3.en':'秋 · 鎏金','p3.tag':'Osmanthus Jin Xuan','p3.desc':'Osmanthus fragrance in a clear golden cup of autumn light.',
+    'p4.name':'Winter · Mystic Down','p4.en':'冬 · 玄羽','p4.tag':"Aged Pu'er",'p4.desc':'Deep aged warmth, like stories by the winter hearth.',
+    'about.label':'ABOUT','about.title':'The Bird Our Mark, Tea Our Heart',
+    'about.desc':'We believe ancient totems deserve to be rekindled by young hands — from high-mountain gardens to city streets, we honor a thousand years of tea with modern craft.',
+    'about.s1':'Stores','about.s2':'Garden Elevation (m)','about.s3':'Craft Steps',
+    'about.v1t':'Origin','about.v1':'Plucked before the rains — one bud, one leaf, raised by mountain mist.',
+    'about.v2t':'Craft','about.v2':'Thirty-six time-honored steps, slow-fired to unlock depth and aroma.',
+    'about.v3t':'Attitude','about.v3':'Not old tea — the first cup of the East for a new generation.',
+    'story.label':'OUR STORY','story.title':'Born of Fire, Bound for Tea',
+    'story.caption':'SLOW FIRE · THIRTY-SIX STEPS',
+    'story.p1t':'Origin','story.p1':'The Vermilion Bird, god of the south, carries fire wherever it flies. We take its spirit: fire to roast the leaf, tea to pass on the flame.',
+    'story.p2t':'Craft','story.p2':'Every leaf passes through thirty-six steps — withering, shaking, firing — reborn in flame like the Bird itself.',
+    'story.p3t':'Today','story.p3':'Today that flame rests in young hands. A cup of tea — both totem and everyday ritual.',
+    'contact.title':'Come, Drink the East','contact.sub':"Stores, franchise and partnerships — let's talk over tea.",
+    'contact.addr':'Flagship · No.9 Chadao Li, Jinjiang, Chengdu','contact.btn':'Book a Tasting',
+    'footer.note':"A feather's flash, a cup of the East"
+  }
+};
+
+let lang = localStorage.getItem('anqi-lang') || 'zh';
+const langBtn = document.getElementById('langToggle');
+
+function applyLang() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = i18n[lang][el.dataset.i18n];
+    if (v !== undefined) el.textContent = v;
+  });
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  document.title = lang === 'zh'
+    ? '安祺与茶 ANQI TEA · 一羽惊鸿，一盏东方'
+    : "ANQI TEA · A Feather's Flash, A Cup of the East";
+  langBtn.textContent = lang === 'zh' ? 'EN' : '中';
+}
+langBtn.addEventListener('click', () => {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('anqi-lang', lang);
+  applyLang();
+});
+applyLang();
+
+/* ---------- 导航：滚动收缩 + 毛玻璃 ---------- */
+const nav = document.getElementById('nav');
+let navTick = false;
+window.addEventListener('scroll', () => {
+  if (navTick) return; navTick = true;
+  requestAnimationFrame(() => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+    navTick = false;
+  });
+}, { passive: true });
+
+/* ---------- 首屏：鼠标视差（lerp 弹簧，可中断） ---------- */
+const layers = [
+  { el: document.getElementById('layerFg'),   fx: -30, fy: -20 },
+  { el: document.getElementById('layerBird'), fx: -15, fy: -10 },
+  { el: document.getElementById('layerBg'),   fx: -6,  fy: -4  }
+];
+let tx = 0, ty = 0, cx = 0, cy = 0;
+if (!RM) {
+  window.addEventListener('pointermove', e => {
+    tx = e.clientX / innerWidth - .5;
+    ty = e.clientY / innerHeight - .5;
+  }, { passive: true });
+  (function parallax() {
+    cx += (tx - cx) * .06;   // lerp = 廉价弹簧：反向无硬切
+    cy += (ty - cy) * .06;
+    layers.forEach(l => {
+      l.el.style.transform = `translate3d(${(cx * l.fx).toFixed(2)}px, ${(cy * l.fy).toFixed(2)}px, 0)`;
+    });
+    requestAnimationFrame(parallax);
+  })();
+}
+
+/* ---------- 首屏退出：穿越感（标题加速上飘 + 朱雀放大） ---------- */
+const heroContent = document.getElementById('heroContent');
+const birdLayer = document.getElementById('layerBird');
+if (!RM) {
+  let heroTick = false;
+  window.addEventListener('scroll', () => {
+    if (heroTick) return; heroTick = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY, h = innerHeight;
+      if (y < h) {
+        const p = y / h; // 0 → 1
+        heroContent.style.transform = `translateY(${(-y * .45).toFixed(1)}px)`;
+        heroContent.style.opacity = Math.max(0, 1 - p * 1.6);
+        birdLayer.style.transform = `translateY(${(-y * .18).toFixed(1)}px) scale(${(1 + p * .14).toFixed(3)})`;
+      }
+      heroTick = false;
+    });
+  }, { passive: true });
+}
+
+/* ---------- 进场动效 + 数字滚动 + scrollspy ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.classList.add('in');
+      if (en.target.dataset.count) countUp(en.target);
+      io.unobserve(en.target);
+    }
+  });
+}, { threshold: .18 });
+document.querySelectorAll('.reveal, .reveal-clip, #storyArt, [data-count]').forEach(el => io.observe(el));
+
+function countUp(el) {
+  const target = +el.dataset.count;
+  if (RM) { el.textContent = target; return; }
+  const t0 = performance.now(), dur = 1400;
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))); // easeOutCubic
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      document.querySelectorAll('.nav-links a').forEach(a =>
+        a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+
+/* ---------- 内容精选：拖拽 + 惯性投影 + 弹簧吸附 ---------- */
+(function () {
+  const wrap = document.getElementById('carouselWrap');
+  const track = document.getElementById('carousel');
+  let x = 0, min = 0, dragging = false, moved = false;
+  let startPX = 0, startX = 0, lastX = 0, lastT = 0, vel = 0; // vel: px/ms
+  let raf = null, snapTimer = null;
+
+  function measure() {
+    min = Math.min(0, wrap.clientWidth - track.scrollWidth - 8);
+    x = Math.max(min, Math.min(0, x));
+  }
+  measure();
+  window.addEventListener('resize', measure);
+
+  function apply() { track.style.transform = `translate3d(${x}px,0,0)`; }
+
+  // 橡皮筋：越过边界越拖越沉
+  function rubber(v) {
+    if (v > 0) return v * .35;
+    if (v < min) return min + (v - min) * .35;
+    return v;
+  }
+
+  function snapPoints() {
+    const card = track.querySelector('.card');
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const step = card.offsetWidth + gap;
+    const pts = [];
+    for (let i = 0; i < track.children.length; i++) pts.push(-i * step);
+    return pts.filter(p => p >= min - 1);
+  }
+
+  // 临界阻尼弹簧（带初速度交接，略有动量感）
+  function springTo(target, v0) {
+    cancelAnimationFrame(raf);
+    let pos = x, v = v0, last = performance.now();
+    const k = 130, c = 2 * Math.sqrt(k) * .92;
+    (function step(now) {
+      const dt = Math.min((now - last) / 1000, .032); last = now;
+      const a = -k * (pos - target) - c * v;
+      v += a * dt; pos += v * dt;
+      x = pos; apply();
+      if (Math.abs(v) > 2 || Math.abs(pos - target) > .5) raf = requestAnimationFrame(step);
+      else { x = target; apply(); }
+    })(last);
+  }
+
+  function settle() {
+    if (x > 0) return springTo(0, 0);
+    if (x < min) return springTo(min, 0);
+    // 苹果式动量投影：落点 = 当前位置 + 速度外推，再吸附最近卡片
+    const d = .995;
+    const projected = x + vel * d / (1 - d);
+    const pts = snapPoints();
+    const target = pts.reduce((a, b) => Math.abs(b - projected) < Math.abs(a - projected) ? b : a, pts[0]);
+    springTo(Math.max(min, Math.min(0, target)), vel * 1000);
+  }
+
+  wrap.addEventListener('pointerdown', e => {
+    dragging = true; moved = false;
+    cancelAnimationFrame(raf);
+    wrap.classList.add('dragging');
+    wrap.setPointerCapture(e.pointerId);
+    startPX = e.clientX; startX = x;
+    lastX = e.clientX; lastT = performance.now(); vel = 0;
+  });
+  wrap.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    if (Math.abs(e.clientX - startPX) > 6) moved = true; // 10px 级滞后阈值
+    x = rubber(startX + (e.clientX - startPX));
+    apply();
+    const now = performance.now(), dt = now - lastT;
+    if (dt > 0) { vel = .8 * vel + .2 * ((e.clientX - lastX) / dt); lastX = e.clientX; lastT = now; }
+  });
+  const end = () => {
+    if (!dragging) return;
+    dragging = false;
+    wrap.classList.remove('dragging');
+    if (RM) { // 降级：直接吸附，无惯性
+      const pts = snapPoints();
+      x = pts.reduce((a, b) => Math.abs(b - x) < Math.abs(a - x) ? b : a, pts[0]);
+      x = Math.max(min, Math.min(0, x)); apply(); return;
+    }
+    settle();
+  };
+  wrap.addEventListener('pointerup', end);
+  wrap.addEventListener('pointercancel', end);
+  // 拖拽后阻止卡片上的误点击
+  wrap.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+  // 滚轮横移（触控板友好）
+  wrap.addEventListener('wheel', e => {
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (delta === 0) return;
+    e.preventDefault();
+    cancelAnimationFrame(raf);
+    x = rubber(x - delta);
+    apply(); vel = 0;
+    clearTimeout(snapTimer);
+    snapTimer = setTimeout(() => { if (!dragging) settle(); }, 140);
+  }, { passive: false });
+})();
+
+/* ---------- 跑马灯内容复制（无缝循环） ---------- */
+(function () {
+  const t = document.getElementById('marqueeTrack');
+  t.innerHTML += t.innerHTML;
+})();
+</script>
+</body>
+</html>

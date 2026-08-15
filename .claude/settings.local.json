@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open *)",
+      "Bash(env)",
+      "Bash(python3 -c \"import rembg\")",
+      "Bash(python3 -c \"import PIL; print\\('PIL ok'\\)\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1440,1000 --screenshot=/tmp/anqi-hero3.png \"file:///Users/mac/Desktop/anqi-tea/index.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1440,1000 --screenshot=/tmp/anqi-hero4.png \"file:///Users/mac/Desktop/anqi-tea/index.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1440,1000 --screenshot=/tmp/anqi-hero5.png \"file:///Users/mac/Desktop/anqi-tea/index.html\")"
+    ]
+  }
+}
