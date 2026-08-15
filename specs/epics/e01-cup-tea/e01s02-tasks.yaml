@@ -4,9 +4,9 @@ tasks:
   - id: t1
     name: 抽取 style.css；共享 data/i18n/main 脚本；虚构内容清零
     verify: npm test
-    status: pending
+    status: passing
   - id: t2
     name: 首页：真实产品卡（链接详情页）/真实故事/设计者说/抖音嵌入/真实联系
     verify: npm test
-    status: pending
+    status: passing
 bcps: 2
