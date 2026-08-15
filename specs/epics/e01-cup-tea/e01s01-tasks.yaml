@@ -1,0 +1,12 @@
+story: e01s01
+title: 测试基建与产品数据模块
+tasks:
+  - id: t1
+    name: node --test 运行器 + 开发记录落盘（specs）
+    verify: npm test
+    status: pending
+  - id: t2
+    name: assets/js/data.js —— 真实四款产品（名称/茶类/产地/价格/冲泡/图片存在）
+    verify: npm test
+    status: pending
+bcps: 2

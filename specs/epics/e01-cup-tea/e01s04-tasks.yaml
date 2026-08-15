@@ -1,0 +1,12 @@
+story: e01s04
+title: 全站英文校验 + 部署准备（Netlify + anqitea.com）
+tasks:
+  - id: t1
+    name: 双语键全覆盖校验（全部页面）
+    verify: npm test
+    status: pending
+  - id: t2
+    name: 部署引导（用户操作）
+    verify: manual
+    status: pending
+bcps: 1

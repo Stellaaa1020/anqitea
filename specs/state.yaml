@@ -1,0 +1,10 @@
+project: anqi-tea
+branch: feat/cup-tea-series
+current_epic: e01
+current_story: e01s02
+handoff:
+  next_skill: develop-tdd
+constraints:
+  - 站点零构建：file:// 双击可开；共享 JS 必须普通 script（非 ES module）
+  - Node 仅用于测试（node --test，无第三方依赖）
+  - 不虚构：无真实依据的地址/邮箱/门店数不得出现

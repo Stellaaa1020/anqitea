@@ -1,0 +1,8 @@
+story: e01s03
+title: 四款产品详情页（编辑部级 5-6 屏）
+tasks:
+  - id: t1
+    name: biluochun/shoumei/mayu/dianhong 四页：hero/故事/品鉴/冲泡/参数(含价格)/互跳
+    verify: npm test
+    status: pending
+bcps: 1

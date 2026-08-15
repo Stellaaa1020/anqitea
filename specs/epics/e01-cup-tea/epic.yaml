@@ -1,0 +1,35 @@
+# 开发记录 · e01 雲鹊晓杯茶真实化改版
+epic: e01-cup-tea
+title: 从虚构单页到真实品牌作品集站
+branch: feat/cup-tea-series
+story: |
+  将虚构的"朱雀四序"单页站改造为基于真实家庭茶店品牌的多页作品集网站：
+  首页 + 4 款产品详情页，全站中英双语。站点零构建（file:// 可直开），
+  Node 仅用于测试。用于申请国外大学的个人作品展示。
+decisions:
+  - { id: 1,  text: "纯展示无交易功能" }
+  - { id: 2,  text: "每款茶独立 HTML；共享 style.css / data.js / i18n.js / main.js（普通 script，非 ES module，保 file:// 可开）" }
+  - { id: 3,  text: "详情页编辑部级 5-6 屏：hero/故事/品鉴/冲泡/参数/产品互跳" }
+  - { id: 4,  text: "真实照片为主，现有 CSS 插画语言为辅" }
+  - { id: 5,  text: "文案由 AI 起草、用户把关；按真实信息写" }
+  - { id: 6,  text: "真实品牌：家里茶店；安祺设计包装/海报/产品照/抖音视频" }
+  - { id: 7,  text: "虚构四序全部替换为雲鹊晓杯茶四款（马跃新程一页双味）" }
+  - { id: 8,  text: "排序按茶类汤色浅→深：碧螺春→寿眉→大红袍/普洱→滇红" }
+  - { id: 9,  text: "朱雀=品牌形象保留；喜鹊=雲鹊晓产品系列形象" }
+  - { id: 10, text: "故事区改真实经历；新增「设计者说」版块，署名安祺不放全名" }
+  - { id: 11, text: "抖音视频站内嵌入播放（open.douyin.com/player）" }
+  - { id: 12, text: "价格展示：¥48–58/桶（10 杯/桶）" }
+  - { id: 13, text: "英文完整（申请国外大学）" }
+  - { id: 14, text: "部署海外免备案，绑定 anqitea.com（阿里云注册）" }
+  - { id: 15, text: "品牌创立 2025 年暑假；不虚构门店数/地址/邮箱" }
+facts:
+  products:
+    - { slug: biluochun, name: 杯茶·碧蕴藏灵（碧螺春）, type: 绿茶, origin: 云南·大叶种鲜叶 }
+    - { slug: shoumei,   name: 雲鹊晓杯茶·百福白茶（寿眉）, type: 白茶, origin: 福建福鼎 }
+    - { slug: mayu,      name: 雲鹊晓杯茶·马跃新程, type: 乌龙+普洱, origin: 武夷山+云南, note: 一页双味 }
+    - { slug: dianhong,  name: 雲鹊晓杯茶·金鹊祥雲（滇红）, type: 红茶, origin: 云南凤庆 }
+  douyin:
+    - { vid: "7634383299120704362", url: "https://v.douyin.com/eplkJ8SkjXE/", topic: 年轻人也爱喝茶 }
+    - { vid: "7607684718892747627", url: "https://v.douyin.com/gcPsNH-De0o/", topic: 马年习俗 }
+  author: 云鹊晓AQ
+  pending_user_input: [ 马跃新程·普洱口味独立包装图（暂用大红袍图） ]
