@@ -6,7 +6,7 @@
 <title>安祺与茶 ANQI TEA · 一羽惊鸿，一盏东方</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=Outfit:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="home">
@@ -21,6 +21,9 @@
     <a href="#designer" data-i18n="nav.designer">设计者说</a>
     <a href="#contact" data-i18n="nav.contact">联系我们</a>
     <button id="langToggle" aria-label="Switch language">EN</button>
+    <button id="navToggle" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </nav>
 </header>
 
@@ -38,16 +41,16 @@
 
   <!-- 中景：朱雀 -->
   <div class="hero-layer layer-bird" id="layerBird">
-    <img class="suzaku-img" src="phonix.png" alt="朱雀展翅">
+    <img class="suzaku-img" src="resources/brand/phonix.png" alt="朱雀展翅">
     <svg class="gaiwan" viewBox="0 0 220 170" aria-hidden="true">
-      <g fill="none" stroke="#C9A24B" stroke-width="4" stroke-linecap="round" opacity=".9">
+      <g fill="none" stroke="#A89878" stroke-width="4" stroke-linecap="round" opacity=".85">
         <path d="M12 122 Q 110 148 208 122"/>
         <path d="M30 122 C 36 78 68 56 110 56 C 152 56 184 78 190 122"/>
         <path d="M66 58 Q 110 28 154 58"/>
         <circle cx="110" cy="24" r="7"/>
       </g>
-      <path class="steam-path" d="M98 100 C 90 74 104 56 96 34" fill="none" stroke="rgba(201,162,75,.55)" stroke-width="4" stroke-linecap="round"/>
-      <path class="steam-path" d="M124 100 C 132 74 118 56 126 34" fill="none" stroke="rgba(201,162,75,.55)" stroke-width="4" stroke-linecap="round" style="animation-delay:-2.4s"/>
+      <path class="steam-path" d="M98 100 C 90 74 104 56 96 34" fill="none" stroke="rgba(168,152,120,.5)" stroke-width="4" stroke-linecap="round"/>
+      <path class="steam-path" d="M124 100 C 132 74 118 56 126 34" fill="none" stroke="rgba(168,152,120,.5)" stroke-width="4" stroke-linecap="round" style="animation-delay:-2.4s"/>
     </svg>
   </div>
 
@@ -56,21 +59,16 @@
     <div class="bokeh b1"></div><div class="bokeh b2"></div><div class="bokeh b3"></div>
   </div>
 
-  <div class="couplet left"  data-i18n="hero.vLeft">南方之神 · 衔火而来</div>
-  <div class="couplet right" data-i18n="hero.vRight">以茶为羽 · 以火为魂</div>
-
   <div class="hero-content" id="heroContent">
     <p class="hero-kicker">ANQI TEA · EST. 2025</p>
-    <h1 class="hero-title"><em data-i18n="hero.titleA">一羽惊鸿</em><br><span data-i18n="hero.titleB">一盏东方</span></h1>
+    <h1 class="hero-title"><span data-i18n="hero.titleA">一羽惊鸿</span><br><span data-i18n="hero.titleB">一盏东方</span></h1>
     <p class="hero-title-en">A Feather's Flash · A Cup of the East</p>
-    <p class="hero-sub" data-i18n="hero.sub">安祺与茶 —— 从一家家庭茶店出发，把中国茶装进年轻人的杯子。</p>
+    <p class="hero-sub" data-i18n="hero.sub">安祺与茶 · 从一家家庭茶店出发，把中国茶装进年轻人的杯子。</p>
     <div class="hero-ctas">
       <a class="btn btn-solid" href="#curated" data-i18n="hero.cta1">品鉴杯茶</a>
       <a class="btn btn-ghost" href="#designer" data-i18n="hero.cta2">设计者说</a>
     </div>
   </div>
-
-  <div class="scroll-hint" data-i18n="hero.scroll">向下探索</div>
 </section>
 
 <!-- ================= 跑马灯 ================= -->
@@ -88,6 +86,17 @@
       <h2 class="section-title reveal-clip" data-i18n="curated.title">雲鹊晓杯茶<small>YUNQUE XIAO CUP TEA · EST. 2025</small></h2>
       <p class="section-desc reveal d1" data-i18n="curated.desc">四款杯茶，五种风味——按茶汤由浅到深，从一口清绿喝到满盏蜜红。</p>
     </div>
+  </div>
+
+  <!-- 四季色带：按茶汤由浅到深，是产品线独有的品牌叙事 -->
+  <div class="spectrum reveal d1" aria-label="杯茶风味色带，从浅到深">
+    <div class="spectrum-bar" role="presentation"></div>
+    <ol class="spectrum-marks">
+      <li><a href="biluochun.html"><b>碧蕴藏灵</b><i>Jade Spirit</i></a></li>
+      <li><a href="shoumei.html"><b>百福白茶</b><i>Hundred Blessings</i></a></li>
+      <li><a href="mayu.html"><b>马跃新程</b><i>Leaping Steed</i></a></li>
+      <li><a href="dianhong.html"><b>金鹊祥雲</b><i>Magpie of Auspicious Clouds</i></a></li>
+    </ol>
   </div>
 
   <div class="carousel-wrap reveal d2" id="carouselWrap">
@@ -181,45 +190,51 @@
   </div>
 
   <div class="dg-grid">
+    <figure class="dg-item dg-logo reveal d1">
+      <img src="resources/brand/logo.png" alt="雲鹊晓品牌标志" loading="lazy">
+      <figcaption>品牌标志<i>BRAND MARK</i></figcaption>
+    </figure>
     <figure class="dg-item reveal d1">
-      <img src="assets/img/three.png" alt="三款杯茶实拍" loading="lazy">
+      <img src="resources/marketing/three-teas.png" alt="三款杯茶实拍" loading="lazy">
       <figcaption>三款杯茶 · 实拍<i>THREE CUP TEAS</i></figcaption>
     </figure>
     <figure class="dg-item reveal d2">
-      <img src="assets/img/detail.png" alt="杯茶设计细节" loading="lazy">
+      <img src="resources/marketing/detail.png" alt="杯茶设计细节" loading="lazy">
       <figcaption>包装设计细节<i>DESIGN DETAILS</i></figcaption>
     </figure>
-    <figure class="dg-item dg-logo reveal d2">
-      <img src="assets/img/logo.png" alt="雲鹊晓品牌标志" loading="lazy">
-      <figcaption>品牌标志<i>BRAND MARK</i></figcaption>
-    </figure>
-    <figure class="dg-item reveal d3">
-      <img src="assets/img/shop1.jpg" alt="门店外观" loading="lazy">
+    <figure class="dg-item reveal d2">
+      <img src="resources/shop/shop-1.jpg" alt="门店外观" loading="lazy">
       <figcaption>门店 · 一切开始的地方<i>THE SHOP</i></figcaption>
     </figure>
     <figure class="dg-item reveal d3">
-      <img src="assets/img/shop2.jpg" alt="门店招牌" loading="lazy">
+      <img src="resources/shop/shop-2.jpg" alt="门店招牌" loading="lazy">
       <figcaption>门店 · 招牌<i>THE SHOP</i></figcaption>
     </figure>
-    <figure class="dg-item reveal d4">
-      <img src="assets/img/shop3.jpg" alt="店内陈列" loading="lazy">
+    <figure class="dg-item reveal d3">
+      <img src="resources/shop/shop-3.jpg" alt="店内陈列" loading="lazy">
       <figcaption>店内 · 陈列与贩售中<i>INSIDE THE SHOP</i></figcaption>
     </figure>
   </div>
 
   <div class="dg-videos">
-    <figure class="video-wrap reveal d1">
-      <iframe src="https://open.douyin.com/player/video?vid=7634383299120704362&autoplay=0" title="品牌短视频" allow="autoplay; fullscreen; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    <figure class="video-card reveal d1">
+      <div class="video-phone">
+        <iframe src="https://open.douyin.com/player/video?vid=7634383299120704362&autoplay=0" title="品牌短视频" allow="autoplay; fullscreen; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
       <figcaption>
-        <span><b data-i18n="designer.v1t">品牌短视频</b> — <span data-i18n="designer.v1d">年轻人也爱喝茶——来看看我们的喝茶方式。</span></span>
-        <a href="https://v.douyin.com/eplkJ8SkjXE/" target="_blank" rel="noopener">抖音 ↗</a>
+        <h4 data-i18n="designer.v1t">品牌短视频</h4>
+        <p data-i18n="designer.v1d">年轻人也爱喝茶，来看看我们的喝茶方式。</p>
+        <a class="video-link" href="https://v.douyin.com/eplkJ8SkjXE/" target="_blank" rel="noopener">抖音 ↗</a>
       </figcaption>
     </figure>
-    <figure class="video-wrap reveal d2">
-      <iframe src="https://open.douyin.com/player/video?vid=7607684718892747627&autoplay=0" title="节气短视频" allow="autoplay; fullscreen; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    <figure class="video-card reveal d2">
+      <div class="video-phone">
+        <iframe src="https://open.douyin.com/player/video?vid=7607684718892747627&autoplay=0" title="节气短视频" allow="autoplay; fullscreen; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
       <figcaption>
-        <span><b data-i18n="designer.v2t">节气短视频</b> — <span data-i18n="designer.v2d">马年吉祥：中国各地习俗知多少。</span></span>
-        <a href="https://v.douyin.com/gcPsNH-De0o/" target="_blank" rel="noopener">抖音 ↗</a>
+        <h4 data-i18n="designer.v2t">节气短视频</h4>
+        <p data-i18n="designer.v2d">马年吉祥：中国各地习俗知多少。</p>
+        <a class="video-link" href="https://v.douyin.com/gcPsNH-De0o/" target="_blank" rel="noopener">抖音 ↗</a>
       </figcaption>
     </figure>
   </div>
@@ -229,9 +244,9 @@
 <section class="section" id="contact">
   <div class="reveal">
     <svg class="footer-bird" viewBox="0 0 1000 1000" aria-hidden="true">
-      <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#C9A24B" transform="translate(500,700) rotate(-40)"/>
+      <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#A89878" transform="translate(500,700) rotate(-40)"/>
       <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#E8392A" transform="translate(500,700)"/>
-      <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#C9A24B" transform="translate(500,700) rotate(40)"/>
+      <path d="M0 0 C 26 -60 40 -160 34 -260 C 30 -330 12 -400 -14 -448 C -26 -380 -38 -300 -44 -210 C -49 -120 -34 -40 0 0 Z" fill="#A89878" transform="translate(500,700) rotate(40)"/>
     </svg>
     <h2 class="contact-title"><span data-i18n="contact.title">来，喝一杯年轻的茶</span><small>COME, DRINK YOUNG</small></h2>
     <p class="contact-sub" data-i18n="contact.sub">雲鹊晓杯茶在家庭门店与抖音同步贩售。这是一位高中生的品牌设计作品——欢迎指教。</p>

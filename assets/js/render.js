@@ -24,7 +24,7 @@
     var price = L ? b.priceEn : b.priceZh;
     var pack = L ? '10 cups per tube' : '每桶 10 杯';
     var series = L ? b.seriesEn : b.seriesZh;
-    var method = L ? 'Hot water straight onto the leaves — that is all.' : '热水直冲杯底原叶——就这么简单。';
+    var method = L ? 'Hot water straight onto the leaves. That is all.' : '热水直冲杯底原叶——就这么简单。';
 
     /* 马跃新程：双口味块 */
     var brewBlock = '';
@@ -76,15 +76,13 @@
       '</section>' +
 
       '<section class="section pd-sec">' +
-        '<div class="section-head"><span class="vlabel">' + T['dt.brewT'] + '</span>' +
-        '<h2 class="section-title">' + T['dt.brewT'] + '<small>HOW TO BREW</small></h2></div>' +
+        '<div class="section-head"><h2 class="section-title">' + T['dt.brewT'] + '<small>HOW TO BREW</small></h2></div>' +
         '<div class="pd-brew">' + brewBlock + '</div>' +
         '<p class="pd-method">' + method + '</p>' +
       '</section>' +
 
       '<section class="section pd-sec pd-tintbg">' +
-        '<div class="section-head"><span class="vlabel">' + T['dt.specT'] + '</span>' +
-        '<h2 class="section-title">' + T['dt.specT'] + '<small>AT A GLANCE</small></h2></div>' +
+        '<div class="section-head"><h2 class="section-title">' + T['dt.specT'] + '<small>AT A GLANCE</small></h2></div>' +
         '<dl class="pd-spec">' +
           '<div><dt>' + T['dt.type'] + '</dt><dd>' + tea + '</dd></div>' +
           '<div><dt>' + T['dt.origin'] + '</dt><dd>' + origin + '</dd></div>' +
@@ -95,8 +93,7 @@
       '</section>' +
 
       '<section class="section pd-sec">' +
-        '<div class="section-head"><span class="vlabel">' + T['dt.moreT'] + '</span>' +
-        '<h2 class="section-title">' + T['dt.moreT'] + '<small>KEEP EXPLORING</small></h2></div>' +
+        '<div class="section-head"><h2 class="section-title">' + T['dt.moreT'] + '<small>KEEP EXPLORING</small></h2></div>' +
         '<div class="pd-more">' + more + '</div>' +
         '<div class="pd-back"><a class="btn btn-ghost" href="index.html#curated">' + T['dt.back'] + '</a></div>' +
       '</section>'

@@ -78,9 +78,25 @@
         navTick = false;
       });
     }, { passive: true });
+
+    /* 移动端汉堡菜单 */
+    const navToggle = $('navToggle');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      /* 点击菜单项后自动收起 */
+      nav.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   }
 
-  /* ---------- 首屏：鼠标视差（lerp 弹簧，可中断） ---------- */
+  /* ---------- 首屏：鼠标视差（lerp 弹簧，停止移动 800ms 后自停，避免永久 RAF） ---------- */
   const layers = [
     { el: $('layerFg'),   fx: -30, fy: -20 },
     { el: $('layerBird'), fx: -15, fy: -10 },
@@ -88,18 +104,25 @@
   ].filter(l => l.el);
   if (!RM && layers.length) {
     let tx = 0, ty = 0, cx = 0, cy = 0;
-    window.addEventListener('pointermove', e => {
-      tx = e.clientX / innerWidth - .5;
-      ty = e.clientY / innerHeight - .5;
-    }, { passive: true });
-    (function parallax() {
+    let rafId = null, lastMove = 0;
+    function tick() {
       cx += (tx - cx) * .06;
       cy += (ty - cy) * .06;
       layers.forEach(l => {
         l.el.style.transform = `translate3d(${(cx * l.fx).toFixed(2)}px, ${(cy * l.fy).toFixed(2)}px, 0)`;
       });
-      requestAnimationFrame(parallax);
-    })();
+      if (performance.now() - lastMove < 800) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        rafId = null;
+      }
+    }
+    window.addEventListener('pointermove', e => {
+      tx = e.clientX / innerWidth - .5;
+      ty = e.clientY / innerHeight - .5;
+      lastMove = performance.now();
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }, { passive: true });
   }
 
   /* ---------- 首屏退出：穿越感 ---------- */
