@@ -37,7 +37,7 @@
         aromaZh: '嫩栗香与豆香，清扬干净', aromaEn: 'Fresh chestnut and bean aroma, clean and bright',
         tasteZh: '入口清鲜，回甘快而持久', tasteEn: 'Fresh on the palate, quick and lingering sweetness',
         tint: '#9CC26B',
-        img: 'assets/img/design-biluochun.jpg', story: 'assets/img/story-biluochun.jpg'
+        img: 'resources/products/biluochun/design.jpg', story: 'resources/products/biluochun/story.jpg'
       },
       {
         slug: 'shoumei', page: 'shoumei.html',
@@ -53,7 +53,7 @@
         aromaZh: '枣香清甜，带日光气', aromaEn: 'Sun-sweet jujube aroma',
         tasteZh: '甜润顺滑，越泡越柔', tasteEn: 'Smooth and sweet, softer with each steep',
         tint: '#D9B36A',
-        img: 'assets/img/design-shoumei.jpg', story: 'assets/img/story-shoumei.jpg'
+        img: 'resources/products/shoumei/design.jpg', story: 'resources/products/shoumei/story.jpg'
       },
       {
         slug: 'mayu', page: 'mayu.html',
@@ -77,7 +77,7 @@
             originZh: '云南', originEn: 'Yunnan',
             brewZh: '沸水冲泡 · 首泡润茶', brewEn: 'Boiling water · rinse the first infusion' }
         ],
-        img: 'assets/img/design-mayu.jpg', story: 'assets/img/story-mayu.jpg'
+        img: 'resources/products/mayu/design.jpg', story: 'resources/products/mayu/story.jpg'
       },
       {
         slug: 'dianhong', page: 'dianhong.html',
@@ -93,7 +93,7 @@
         aromaZh: '蜜香馥郁，带薯甜', aromaEn: 'Rich honey with sweet-potato notes',
         tasteZh: '甜醇饱满，收口干净', tasteEn: 'Full and sweet, clean finish',
         tint: '#C0492B',
-        img: 'assets/img/design-dianhong.jpg', story: 'assets/img/story-dianhong.jpg'
+        img: 'resources/products/dianhong/design.jpg', story: 'resources/products/dianhong/story.jpg'
       }
     ]
   };
