@@ -572,18 +572,38 @@ body {
 /* 去掉斜体英文 caps（ORIGIN / CUP TEA / TODAY）的 AI 字段标签指纹 */
 .story-item h3 i { display: none; }
 .story-item p { margin-top: 12px; font-size: 14px; line-height: 2; letter-spacing: .03em; color: rgba(245, 244, 240, .72); }
-/* 叙事续读：品牌故事 → 商业实践 */
-.story-more {
-  display: inline-flex; align-items: center; gap: 10px;
-  margin-top: 30px; padding-bottom: 4px;
-  font-size: 13.5px; font-weight: 500; letter-spacing: .12em;
-  color: var(--jin-light); text-decoration: none;
-  border-bottom: 1px solid rgba(201, 162, 75, .45);
-  transition: color .25s, border-color .25s;
+/* 商业实践入口卡：品牌故事 → project.html（山海茶韵） */
+.venture-card {
+  display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch;
+  max-width: 1080px; margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(33, 24, 18, .08);
+  border-radius: 22px; overflow: hidden;
+  text-decoration: none; color: inherit;
+  box-shadow: 0 24px 60px rgba(33, 24, 18, .08);
+  transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out);
 }
-.story-more i { font-style: normal; font-family: var(--latin); transition: transform .3s var(--ease-out); }
-.story-more:hover { color: var(--rice); border-color: var(--rice); }
-.story-more:hover i { transform: translateX(5px); }
+.venture-card:hover { transform: translateY(-5px); box-shadow: 0 34px 76px rgba(33, 24, 18, .14); }
+.venture-photo { margin: 0; min-height: 100%; }
+.venture-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.venture-body { padding: clamp(26px, 4vw, 46px); display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.venture-title { font-family: var(--serif); font-weight: 900; color: var(--ink); line-height: 1.2; }
+.venture-title span { display: block; font-size: clamp(1.6rem, 2.6vw, 2.2rem); letter-spacing: .06em; }
+.venture-title small { display: block; margin-top: 6px; font-size: clamp(.95rem, 1.4vw, 1.15rem); font-weight: 600; letter-spacing: .1em; color: var(--zhu); }
+.venture-desc { font-size: 14px; line-height: 2; letter-spacing: .03em; color: var(--text); }
+.venture-stats {
+  list-style: none; margin: 2px 0 0; padding: 14px 0 0; width: 100%;
+  display: grid; grid-template-columns: repeat(4, auto); gap: 8px 18px; justify-content: start;
+  border-top: 1px solid rgba(33, 24, 18, .1);
+}
+.venture-stats b { display: block; font-family: var(--latin); font-size: clamp(1.05rem, 1.8vw, 1.35rem); font-weight: 700; color: var(--zhu); }
+.venture-stats span { display: block; margin-top: 2px; font-size: 12px; letter-spacing: .05em; color: var(--tea); }
+.venture-cta { margin-top: 10px; align-self: flex-start; }
+@media (max-width: 860px) {
+  .venture-card { grid-template-columns: 1fr; }
+  .venture-photo { aspect-ratio: 16 / 10; min-height: 0; }
+  .venture-stats { grid-template-columns: repeat(2, auto); }
+}
 .story-vtitle {
   writing-mode: vertical-rl; font-family: var(--serif); font-weight: 900;
   font-size: clamp(1.8rem, 3.4vw, 2.8rem); letter-spacing: .22em;
