@@ -20,15 +20,17 @@
     const track = $('carousel');
     if (!track || !window.ANQI) return;
     const L = l === 'en';
+    const dict = (window.I18N && window.I18N[l]) || {};
     track.innerHTML = window.ANQI.products.map(p => `
       <a class="card" href="${p.page}">
         <div class="card-visual card-photo-wrap">
-          <img class="card-photo" src="${p.img}" alt="${p.nameZh} · ${p.nameEn}" loading="lazy">
+          <img class="card-photo" style="view-transition-name:cup-${p.slug}" src="${p.img}" alt="${p.nameZh} · ${p.nameEn}" loading="lazy">
         </div>
         <div class="card-body">
           <h3 class="card-name"><span>${L ? p.nameEn : p.nameZh}</span><small>${L ? p.nameZh : p.nameEn}</small></h3>
           <span class="card-tag" style="background:linear-gradient(120deg, ${p.tint}, var(--cheng))">${L ? p.teaEn : p.teaZh}</span>
           <p class="card-desc">${L ? p.descEn : p.descZh}</p>
+          <span class="card-go">${dict['card.go'] || ''}<i aria-hidden="true">→</i></span>
         </div>
       </a>`).join('');
   }
@@ -41,15 +43,19 @@
     if (dict) {
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const v = dict[el.dataset.i18n];
-        if (v !== undefined) el.textContent = v;
+        if (v === undefined) return;
+        /* 首个文本节点替换，保留 <small> 等子元素（章节英文副标题） */
+        if (el.firstChild && el.firstChild.nodeType === 3) el.firstChild.textContent = v;
+        else el.textContent = v;
       });
     }
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-    if (document.body.dataset.page === 'home') {
-      document.title = lang === 'zh'
-        ? '安祺与茶 ANQI TEA · 雲鹊晓杯茶'
-        : 'ANQI TEA · Yunque Xiao Cup Tea';
-    }
+    const TITLES = {
+      home: ['安祺与茶 ANQI TEA · 雲鹊晓杯茶', 'ANQI TEA · Yunque Xiao Cup Tea'],
+      project: ['山海茶韵 · 学生商业实践 · 安祺与茶 ANQI TEA', 'A Student Tea Venture · ANQI TEA']
+    };
+    const t = TITLES[document.body.dataset.page];
+    if (t) document.title = lang === 'zh' ? t[0] : t[1];
     renderSeries(lang);
     if (document.body.dataset.page && document.body.dataset.page !== 'home' &&
         window.ANQI && window.ANQI.mountProduct) {
@@ -64,8 +70,8 @@
     lang = lang === 'zh' ? 'en' : 'zh';
     safeStore.set('anqi-lang', lang);
     applyLang();
+    watchReveals(); // 语言切换重挂载详情页后，为新元素补挂进场观察
   });
-  applyLang();
 
   /* ---------- 导航：滚动收缩 + 毛玻璃 ---------- */
   const nav = $('nav');
@@ -75,9 +81,21 @@
       if (navTick) return; navTick = true;
       requestAnimationFrame(() => {
         nav.classList.toggle('scrolled', window.scrollY > 80);
+        const tt = $('toTop');
+        if (tt) tt.classList.toggle('show', window.scrollY > 700);
         navTick = false;
       });
     }, { passive: true });
+    /* 带滚动位置加载（刷新/回退）时也校正一次初始态 */
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+    const tt0 = $('toTop');
+    if (tt0) tt0.classList.toggle('show', window.scrollY > 700);
+
+    /* 返回顶部（长页导航） */
+    const toTop = $('toTop');
+    if (toTop) toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' });
+    });
 
     /* 移动端汉堡菜单 */
     const navToggle = $('navToggle');
@@ -146,16 +164,30 @@
   }
 
   /* ---------- 进场动效 + 数字滚动 + scrollspy ---------- */
+  /* clip-path 全裁元素在 Chrome 中交集比恒为 0，故 .reveal-clip 改观察其未裁切的父级 */
+  const clipHosts = new Map();
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (en.isIntersecting) {
-        en.target.classList.add('in');
-        if (en.target.dataset.count) countUp(en.target);
+        const clip = clipHosts.get(en.target);
+        const el = clip || en.target;
+        el.classList.add('in');
+        if (el.dataset && el.dataset.count) countUp(el);
         io.unobserve(en.target);
+        if (clip) clipHosts.delete(en.target);
       }
     });
   }, { threshold: .18 });
-  document.querySelectorAll('.reveal, .reveal-clip, #storyArt, [data-count]').forEach(el => io.observe(el));
+  function watchReveals() {
+    document.querySelectorAll('.reveal:not(.in), [data-count]').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal-clip:not(.in)').forEach(el => {
+      const host = el.parentElement || el;
+      clipHosts.set(host, el);
+      io.observe(host);
+    });
+  }
+  applyLang();   // 先渲染（首页卡片 / 详情页整段），再统一挂进场观察
+  watchReveals();
 
   function countUp(el) {
     const target = +el.dataset.count;
@@ -171,8 +203,9 @@
   const spy = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (en.isIntersecting) {
-        document.querySelectorAll('.nav-links a').forEach(a =>
-          a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+        /* 仅高亮本页目录（[data-spy] 容器内的链接）；页级 active 由各页静态标记 */
+        document.querySelectorAll('[data-spy] a[href*="#"]').forEach(a =>
+          a.classList.toggle('active', a.getAttribute('href').endsWith('#' + en.target.id)));
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
@@ -183,6 +216,9 @@
     const wrap = $('carouselWrap');
     const track = $('carousel');
     if (!wrap || !track) return;
+    /* 首次互动后淡出拖动提示：完成使命即退场 */
+    const hint = document.querySelector('.carousel-hint');
+    const dimHint = () => { if (hint) hint.classList.add('done'); };
     let x = 0, min = 0, dragging = false, moved = false;
     let startPX = 0, startX = 0, lastX = 0, lastT = 0, vel = 0;
     let raf = null, snapTimer = null;
@@ -238,6 +274,7 @@
 
     wrap.addEventListener('pointerdown', e => {
       dragging = true; moved = false;
+      dimHint();
       cancelAnimationFrame(raf);
       wrap.classList.add('dragging');
       wrap.setPointerCapture(e.pointerId);
@@ -272,6 +309,7 @@
       if (delta === 0) return;
       e.preventDefault();
       cancelAnimationFrame(raf);
+      dimHint();
       x = rubber(x - delta);
       apply(); vel = 0;
       clearTimeout(snapTimer);

@@ -13,11 +13,12 @@
 3. 登录后，你会看到一个页面，中间有一块虚线区域，写着
    **"Drag and drop your site output folder here"**（把网站文件夹拖到这里）
 4. 打开"访达"（Finder），进入 `anqi-tea` 文件夹，**把以下东西全选**后拖进那块虚线区域：
-   - `index.html`、`biluochun.html`、`shoumei.html`、`mayu.html`、`dianhong.html`（5 个网页文件）
+   - `index.html`、`project.html`、`biluochun.html`、`shoumei.html`、`mayu.html`、`dianhong.html`（6 个网页文件）
    - `assets` 文件夹（样式 / 脚本）
-   - `resources` 文件夹（所有品牌图、产品图、店面图）
+   - `resources` 文件夹（所有品牌图、产品图、店面图、项目档案图；学生项目图已按类目分好：
+     `resources/student/{research,product,business,douyin,science-fair,oxford,beyond}/`）
    - ⚠️ **不要拖** `specs`、`scripts`、`test` 这些文件夹（内部素材和开发档案，不用上传）
-   - 小技巧：在 `anqi-tea` 里新建一个文件夹叫 `site`，把上面要传的 7 样复制进去，然后整个 `site` 拖到 Netlify
+   - 小技巧：在 `anqi-tea` 里新建一个文件夹叫 `site`，把上面要传的 8 样复制进去，然后整个 `site` 拖到 Netlify
 5. 拖上去后等 10 秒左右，Netlify 会给你一个网址，长得像
    `https://你的随机名字.netlify.app` —— **点开看看，这就是你的网站上线了！**
    （手机也发给别人试试）

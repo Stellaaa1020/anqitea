@@ -3,25 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>金鹊祥雲 · 雲鹊晓杯茶 — 安祺与茶</title>
+<meta name="description" content="金鹊祥雲 · 凤庆滇红红茶，雲鹊晓杯茶系列：杯底藏原叶，热水一冲即饮。">
+<meta name="theme-color" content="#F5F4F0">
+<meta property="og:site_name" content="安祺与茶 ANQI TEA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="金鹊祥雲 · 雲鹊晓杯茶 · 安祺与茶">
+<meta property="og:description" content="金鹊祥雲 · 凤庆滇红红茶，雲鹊晓杯茶系列：杯底藏原叶，热水一冲即饮。">
+<meta property="og:url" content="https://anqitea.com/dianhong.html">
+<meta property="og:image" content="https://anqitea.com/resources/products/dianhong/design.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<title>金鹊祥雲 · 雲鹊晓杯茶 · 安祺与茶</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="resources/brand/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=Outfit:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="dianhong">
+<a class="skip-link" href="#product" data-i18n="a11y.skip">跳到主要内容</a>
 
 <header class="nav" id="nav">
   <a class="logo" href="index.html">安祺与茶<span>ANQI TEA</span></a>
   <nav class="nav-links">
-    <a href="index.html#curated">雲鹊晓杯茶</a>
-    <a href="index.html#designer">设计者说</a>
+    <a href="index.html" data-i18n="nav.home">首页</a>
+    <a href="index.html#curated" class="active" data-i18n="nav.curated">杯茶系列</a>
+    <a href="index.html#story" data-i18n="nav.story">品牌故事</a>
+    <a href="index.html#designer" data-i18n="nav.designer">设计者说</a>
+    <a href="project.html" data-i18n="nav.project">商业实践</a>
+    <a href="index.html#contact" data-i18n="nav.contact">联系我们</a>
     <button id="langToggle" aria-label="Switch language">EN</button>
   </nav>
+  <button id="navToggle" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
 </header>
 
 <main id="product"><!-- 由 render.js 依 ANQI.products 渲染（单一事实来源） --></main>
 
+<footer class="site-footer solo">
+  <div class="sf-inner">
+    <div class="sf-brand">
+      <p class="sf-logo">安祺与茶<span>ANQI TEA</span></p>
+      <p class="sf-tag" data-i18n="ft.tag">从家庭茶店出发，把中国茶装进年轻人的杯子。</p>
+    </div>
+    <nav class="sf-cols" aria-label="站点地图">
+      <div>
+        <b data-i18n="ft.colBrand">品牌</b>
+        <a href="index.html" data-i18n="nav.home">首页</a>
+        <a href="index.html#story" data-i18n="nav.story">品牌故事</a>
+        <a href="index.html#designer" data-i18n="nav.designer">设计者说</a>
+      </div>
+      <div>
+        <b data-i18n="nav.curated">杯茶系列</b>
+        <a href="biluochun.html" data-i18n="p.biluochun">碧蕴藏灵</a>
+        <a href="shoumei.html" data-i18n="p.shoumei">百福白茶</a>
+        <a href="mayu.html" data-i18n="p.mayu">马跃新程</a>
+        <a href="dianhong.html" data-i18n="p.dianhong">金鹊祥雲</a>
+      </div>
+      <div>
+        <b data-i18n="ft.colMore">了解更多</b>
+        <a href="project.html" data-i18n="nav.project">商业实践</a>
+        <a href="https://v.douyin.com/eplkJ8SkjXE/" target="_blank" rel="noopener" data-i18n="contact.douyin">抖音 · @云鹊晓AQ</a>
+        <a href="index.html#contact" data-i18n="nav.contact">联系我们</a>
+      </div>
+    </nav>
+  </div>
+  <p class="footer-note">© 2025 安祺与茶 ANQI TEA · 雲鹊晓杯茶 · <span data-i18n="footer.note">本站为安祺的个人品牌设计作品 · ANQI'S PORTFOLIO</span></p>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/render.js"></script>

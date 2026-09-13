@@ -8,11 +8,11 @@ const load = require('../helpers/load');
 
 const R = f => fs.readFileSync(path.join(__dirname, '..', f), 'utf8');
 const data = load('assets/js/data.js');
-const PAGES = ['index.html', ...data.ANQI.products.map(p => p.page)];
+const PAGES = ['index.html', 'project.html', ...data.ANQI.products.map(p => p.page)];
 const FI = /绯羽|炽翎|玄羽|朱雀四序|桂花金萱|蜜香红茶|岩韵乌龙|hello@anqitea|成都市锦江区/;
 
-test('页面清单 = 首页 + 四款详情页，全部存在', () => {
-  assert.deepEqual(PAGES, ['index.html', 'biluochun.html', 'shoumei.html', 'mayu.html', 'dianhong.html']);
+test('页面清单 = 首页 + 项目页 + 四款详情页，全部存在', () => {
+  assert.deepEqual(PAGES, ['index.html', 'project.html', 'biluochun.html', 'shoumei.html', 'mayu.html', 'dianhong.html']);
   for (const f of PAGES) assert.ok(fs.existsSync(f), `缺页面: ${f}`);
 });
 

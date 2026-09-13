@@ -3,28 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="雲鹊晓杯茶 · 原叶直泡，一杯一泡。安祺与茶，从家庭茶店出发，把中国茶装进年轻人的杯子。">
+<meta name="theme-color" content="#F5F4F0">
+<meta property="og:site_name" content="安祺与茶 ANQI TEA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="安祺与茶 ANQI TEA · 一羽惊鸿，一盏东方">
+<meta property="og:description" content="雲鹊晓杯茶 · 原叶直泡，一杯一泡。安祺与茶，从家庭茶店出发，把中国茶装进年轻人的杯子。">
+<meta property="og:url" content="https://anqitea.com/">
+<meta property="og:image" content="https://anqitea.com/resources/marketing/three-teas.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <title>安祺与茶 ANQI TEA · 一羽惊鸿，一盏东方</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="resources/brand/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=Outfit:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="home">
+<a class="skip-link" href="#home" data-i18n="a11y.skip">跳到主要内容</a>
 
 <!-- ================= 导航 ================= -->
 <header class="nav" id="nav">
   <a class="logo" href="#home">安祺与茶<span>ANQI TEA</span></a>
-  <nav class="nav-links">
+  <nav class="nav-links" data-spy>
     <a href="#home"     data-i18n="nav.home">首页</a>
     <a href="#curated" data-i18n="nav.curated">杯茶系列</a>
     <a href="#story"   data-i18n="nav.story">品牌故事</a>
     <a href="#designer" data-i18n="nav.designer">设计者说</a>
+    <a href="project.html" data-i18n="nav.project">商业实践</a>
     <a href="#contact" data-i18n="nav.contact">联系我们</a>
     <button id="langToggle" aria-label="Switch language">EN</button>
-    <button id="navToggle" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
   </nav>
+  <button id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
 </header>
 
 <!-- ================= 首屏 ================= -->
@@ -41,7 +54,7 @@
 
   <!-- 中景：朱雀 -->
   <div class="hero-layer layer-bird" id="layerBird">
-    <img class="suzaku-img" src="resources/brand/phonix.png" alt="朱雀展翅">
+    <img class="suzaku-img" src="resources/brand/phoenix.jpg" alt="朱雀展翅">
     <svg class="gaiwan" viewBox="0 0 220 170" aria-hidden="true">
       <g fill="none" stroke="#A89878" stroke-width="4" stroke-linecap="round" opacity=".85">
         <path d="M12 122 Q 110 148 208 122"/>
@@ -92,10 +105,10 @@
   <div class="spectrum reveal d1" aria-label="杯茶风味色带，从浅到深">
     <div class="spectrum-bar" role="presentation"></div>
     <ol class="spectrum-marks">
-      <li><a href="biluochun.html"><b>碧蕴藏灵</b><i>Jade Spirit</i></a></li>
-      <li><a href="shoumei.html"><b>百福白茶</b><i>Hundred Blessings</i></a></li>
-      <li><a href="mayu.html"><b>马跃新程</b><i>Leaping Steed</i></a></li>
-      <li><a href="dianhong.html"><b>金鹊祥雲</b><i>Magpie of Auspicious Clouds</i></a></li>
+      <li style="--tint:#9CC26B"><a href="biluochun.html"><b><i class="sdot" aria-hidden="true"></i><span data-i18n="p.biluochun">碧蕴藏灵</span></b><i>Jade Spirit</i></a></li>
+      <li style="--tint:#D9B36A"><a href="shoumei.html"><b><i class="sdot" aria-hidden="true"></i><span data-i18n="p.shoumei">百福白茶</span></b><i>Hundred Blessings</i></a></li>
+      <li style="--tint:#8A5A33"><a href="mayu.html"><b><i class="sdot" aria-hidden="true"></i><span data-i18n="p.mayu">马跃新程</span></b><i>Leaping Steed</i></a></li>
+      <li style="--tint:#C0492B"><a href="dianhong.html"><b><i class="sdot" aria-hidden="true"></i><span data-i18n="p.dianhong">金鹊祥雲</span></b><i>Magpie of Auspicious Clouds</i></a></li>
     </ol>
   </div>
 
@@ -126,6 +139,7 @@
       <div class="value-icon">便</div>
       <h3><span data-i18n="about.v1t">一杯一泡</span><small>ONE CUP</small></h3>
       <p data-i18n="about.v1">热水直冲，不用茶具不用等——一只杯子就是一场茶事。</p>
+      <img class="value-photo" src="resources/shop/shop-3.jpg" alt="安祺家的茶店 · 一切开始的地方" loading="lazy">
     </div>
     <div class="value reveal d2">
       <div class="value-icon">真</div>
@@ -175,6 +189,7 @@
         <h3><span data-i18n="story.p3t">今天</span><i>TODAY</i></h3>
         <p data-i18n="story.p3">现在它在店里、在抖音上、在同学的书桌上。茶还是那杯茶，只是换了一只更年轻的杯子。</p>
       </div>
+      <a class="story-more reveal d4" href="project.html"><span data-i18n="story.more">下一章 · 这盏茶长成的生意「山海茶韵」</span><i aria-hidden="true">→</i></a>
     </div>
   </div>
 </section>
@@ -195,11 +210,11 @@
       <figcaption>品牌标志<i>BRAND MARK</i></figcaption>
     </figure>
     <figure class="dg-item reveal d1">
-      <img src="resources/marketing/three-teas.png" alt="三款杯茶实拍" loading="lazy">
+      <img src="resources/marketing/three-teas.jpg" alt="三款杯茶实拍" loading="lazy">
       <figcaption>三款杯茶 · 实拍<i>THREE CUP TEAS</i></figcaption>
     </figure>
     <figure class="dg-item reveal d2">
-      <img src="resources/marketing/detail.png" alt="杯茶设计细节" loading="lazy">
+      <img src="resources/marketing/detail.jpg" alt="杯茶设计细节" loading="lazy">
       <figcaption>包装设计细节<i>DESIGN DETAILS</i></figcaption>
     </figure>
     <figure class="dg-item reveal d2">
@@ -258,9 +273,41 @@
       <a class="btn btn-solid" href="https://v.douyin.com/eplkJ8SkjXE/" target="_blank" rel="noopener" data-i18n="contact.btn">去抖音看看</a>
     </div>
   </div>
-  <p class="footer-note">© 2025 安祺与茶 ANQI TEA · 雲鹊晓杯茶 · <span data-i18n="footer.note">本站为安祺的个人品牌设计作品 · ANQI'S PORTFOLIO</span></p>
+  <footer class="site-footer">
+    <div class="sf-inner">
+      <div class="sf-brand">
+        <p class="sf-logo">安祺与茶<span>ANQI TEA</span></p>
+        <p class="sf-tag" data-i18n="ft.tag">从家庭茶店出发，把中国茶装进年轻人的杯子。</p>
+      </div>
+      <nav class="sf-cols" aria-label="站点地图">
+        <div>
+          <b data-i18n="ft.colBrand">品牌</b>
+          <a href="index.html" data-i18n="nav.home">首页</a>
+          <a href="index.html#story" data-i18n="nav.story">品牌故事</a>
+          <a href="index.html#designer" data-i18n="nav.designer">设计者说</a>
+        </div>
+        <div>
+          <b data-i18n="nav.curated">杯茶系列</b>
+          <a href="biluochun.html" data-i18n="p.biluochun">碧蕴藏灵</a>
+          <a href="shoumei.html" data-i18n="p.shoumei">百福白茶</a>
+          <a href="mayu.html" data-i18n="p.mayu">马跃新程</a>
+          <a href="dianhong.html" data-i18n="p.dianhong">金鹊祥雲</a>
+        </div>
+        <div>
+          <b data-i18n="ft.colMore">了解更多</b>
+          <a href="project.html" data-i18n="nav.project">商业实践</a>
+          <a href="https://v.douyin.com/eplkJ8SkjXE/" target="_blank" rel="noopener" data-i18n="contact.douyin">抖音 · @云鹊晓AQ</a>
+          <a href="index.html#contact" data-i18n="nav.contact">联系我们</a>
+        </div>
+      </nav>
+    </div>
+    <p class="footer-note">© 2025 安祺与茶 ANQI TEA · 雲鹊晓杯茶 · <span data-i18n="footer.note">本站为安祺的个人品牌设计作品 · ANQI'S PORTFOLIO</span></p>
+  </footer>
 </section>
 
+<button class="to-top" id="toTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
