@@ -29,3 +29,9 @@ archive/
 
 # 视觉走查截图（本地生成）
 .shots/
+
+# Netlify 部署暂存目录（scripts/deploy 时由仓库文件复制生成）
+site/
+
+# Local Netlify folder
+.netlify

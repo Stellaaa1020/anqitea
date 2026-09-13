@@ -3,6 +3,18 @@
 目标：让全世界（包括招生官）通过 **anqitea.com** 打开你的网站。
 全程免费，约 15 分钟。分两大步：① 传网站 → ② 绑域名。
 
+> **✅ 2026-09-13 已上线：** https://anqitea.netlify.app （Netlify 项目名 `anqitea`，
+> 账号 QM YE / GitHub 登录）。以后更新网站，最简单的方式是在仓库根目录跑：
+>
+> ```bash
+> rm -rf site && mkdir site && cp index.html project.html biluochun.html shoumei.html mayu.html dianhong.html site/ && cp -R assets resources site/
+> npx netlify-cli deploy --prod --dir site
+> ```
+>
+> 注意：新项目默认「仅预览环境需登录」，生产环境已设为公开
+> （Project configuration → General → Project visibility = Public）；
+> 若再出现 401 登录页，去 Netlify 控制台检查这个开关即可。
+
 ---
 
 ## 第一步：把网站传到 Netlify（免费托管）
