@@ -23,3 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 specs/.snapshots/
+
+# 原始素材底档（体积大，仅本地留存；网站引用 resources/ 下的优化副本）
+archive/
+
+# 视觉走查截图（本地生成）
+.shots/
