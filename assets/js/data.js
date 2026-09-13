@@ -37,7 +37,8 @@
         aromaZh: '嫩栗香与豆香，清扬干净', aromaEn: 'Fresh chestnut and bean aroma, clean and bright',
         tasteZh: '入口清鲜，回甘快而持久', tasteEn: 'Fresh on the palate, quick and lingering sweetness',
         tint: '#9CC26B',
-        img: 'resources/products/biluochun/design.jpg', story: 'resources/products/biluochun/story.jpg'
+        img: 'resources/products/biluochun/design.jpg', story: 'resources/products/biluochun/story.jpg',
+        cup: 'resources/student/product/cup-pixiu.jpg', cupTagKey: 'pj.cup.1tag'
       },
       {
         slug: 'shoumei', page: 'shoumei.html',
@@ -53,7 +54,8 @@
         aromaZh: '枣香清甜，带日光气', aromaEn: 'Sun-sweet jujube aroma',
         tasteZh: '甜润顺滑，越泡越柔', tasteEn: 'Smooth and sweet, softer with each steep',
         tint: '#D9B36A',
-        img: 'resources/products/shoumei/design.jpg', story: 'resources/products/shoumei/story.jpg'
+        img: 'resources/products/shoumei/design.jpg', story: 'resources/products/shoumei/story.jpg',
+        cup: 'resources/student/product/cup-baize.jpg', cupTagKey: 'pj.cup.2tag'
       },
       {
         slug: 'mayu', page: 'mayu.html',
@@ -77,7 +79,8 @@
             originZh: '云南', originEn: 'Yunnan',
             brewZh: '沸水冲泡 · 首泡润茶', brewEn: 'Boiling water · rinse the first infusion' }
         ],
-        img: 'resources/products/mayu/design.jpg', story: 'resources/products/mayu/story.jpg'
+        img: 'resources/products/mayu/design.jpg', story: 'resources/products/mayu/story.jpg',
+        cup: 'resources/student/product/cup-tianma.jpg', cupTagKey: 'pj.cup.3tag'
       },
       {
         slug: 'dianhong', page: 'dianhong.html',
@@ -93,7 +96,8 @@
         aromaZh: '蜜香馥郁，带薯甜', aromaEn: 'Rich honey with sweet-potato notes',
         tasteZh: '甜醇饱满，收口干净', tasteEn: 'Full and sweet, clean finish',
         tint: '#C0492B',
-        img: 'resources/products/dianhong/design.jpg', story: 'resources/products/dianhong/story.jpg'
+        img: 'resources/products/dianhong/design.jpg', story: 'resources/products/dianhong/story.jpg',
+        cup: 'resources/student/product/cup-zhuque.jpg', cupTagKey: 'pj.cup.4tag'
       }
     ]
   };

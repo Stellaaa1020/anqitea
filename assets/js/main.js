@@ -21,18 +21,20 @@
     if (!track || !window.ANQI) return;
     const L = l === 'en';
     const dict = (window.I18N && window.I18N[l]) || {};
-    track.innerHTML = window.ANQI.products.map(p => `
+    track.innerHTML = window.ANQI.products.map(p => {
+      const cupTag = (p.cupTagKey && dict[p.cupTagKey]) || (L ? p.teaEn : p.teaZh);
+      return `
       <a class="card" href="${p.page}">
         <div class="card-visual card-photo-wrap">
-          <img class="card-photo" style="view-transition-name:cup-${p.slug}" src="${p.img}" alt="${p.nameZh} · ${p.nameEn}" loading="lazy">
+          <img class="card-photo" style="view-transition-name:cup-${p.slug}" src="${p.cup || p.img}" alt="${cupTag} · ${L ? p.nameEn : p.nameZh}" loading="lazy">
         </div>
         <div class="card-body">
           <h3 class="card-name"><span>${L ? p.nameEn : p.nameZh}</span><small>${L ? p.nameZh : p.nameEn}</small></h3>
-          <span class="card-tag" style="background:linear-gradient(120deg, ${p.tint}, var(--cheng))">${L ? p.teaEn : p.teaZh}</span>
+          <span class="card-tag" style="background:linear-gradient(120deg, ${p.tint}, var(--cheng))">${cupTag}</span>
           <p class="card-desc">${L ? p.descEn : p.descZh}</p>
           <span class="card-go">${dict['card.go'] || ''}<i aria-hidden="true">→</i></span>
         </div>
-      </a>`).join('');
+      </a>`;}).join('');
   }
 
   /* ---------- 中英双语 ---------- */
